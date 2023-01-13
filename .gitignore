@@ -2,3 +2,4 @@
 *.vsdx
 *.~vsdx
 *.docx
+._build/
