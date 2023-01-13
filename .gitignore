@@ -2,4 +2,10 @@
 *.vsdx
 *.~vsdx
 *.docx
-._build/
+_build/
+_config.yml
+_toc.yml
+intro.md
+logo.svg
+references.bib
+requirements.txt
