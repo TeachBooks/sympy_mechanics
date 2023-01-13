@@ -1,0 +1,244 @@
+Traceback (most recent call last):
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+W_to_second_normal_mode_sin_func = sp.lambdify((x,t),W_to_second_normal_mode_sin)
+W_to_arbitrary_sin_func = sp.lambdify((x,t),W_to_arbitrary_sin)
+W_to_constant_sin_func = sp.lambdify((x,t),W_to_constant_sin)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNotImplementedError[0m                       Traceback (most recent call last)
+[1;32m~\AppData\Local\Temp\ipykernel_24776\3484483245.py[0m in [0;36m<module>[1;34m[0m
+[1;32m----> 1[1;33m [0mW_to_second_normal_mode_sin_func[0m [1;33m=[0m [0msp[0m[1;33m.[0m[0mlambdify[0m[1;33m([0m[1;33m([0m[0mx[0m[1;33m,[0m[0mt[0m[1;33m)[0m[1;33m,[0m[0mW_to_second_normal_mode_sin[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m      2[0m [0mW_to_arbitrary_sin_func[0m [1;33m=[0m [0msp[0m[1;33m.[0m[0mlambdify[0m[1;33m([0m[1;33m([0m[0mx[0m[1;33m,[0m[0mt[0m[1;33m)[0m[1;33m,[0m[0mW_to_arbitrary_sin[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m      3[0m [0mW_to_constant_sin_func[0m [1;33m=[0m [0msp[0m[1;33m.[0m[0mlambdify[0m[1;33m([0m[1;33m([0m[0mx[0m[1;33m,[0m[0mt[0m[1;33m)[0m[1;33m,[0m[0mW_to_constant_sin[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\utilities\lambdify.py[0m in [0;36mlambdify[1;34m(args, expr, modules, printer, use_imps, dummify, cse)[0m
+[0;32m    873[0m     [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    874[0m         [0mcses[0m[1;33m,[0m [0m_expr[0m [1;33m=[0m [1;33m([0m[1;33m)[0m[1;33m,[0m [0mexpr[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 875[1;33m     [0mfuncstr[0m [1;33m=[0m [0mfuncprinter[0m[1;33m.[0m[0mdoprint[0m[1;33m([0m[0mfuncname[0m[1;33m,[0m [0miterable_args[0m[1;33m,[0m [0m_expr[0m[1;33m,[0m [0mcses[0m[1;33m=[0m[0mcses[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    876[0m [1;33m[0m[0m
+[0;32m    877[0m     [1;31m# Collect the module imports from the code printers.[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\utilities\lambdify.py[0m in [0;36mdoprint[1;34m(self, funcname, args, expr, cses)[0m
+[0;32m   1150[0m                 [0mfuncbody[0m[1;33m.[0m[0mappend[0m[1;33m([0m[1;34m'{} = {}'[0m[1;33m.[0m[0mformat[0m[1;33m([0m[0ms[0m[1;33m,[0m [0mself[0m[1;33m.[0m[0m_exprrepr[0m[1;33m([0m[0me[0m[1;33m)[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1151[0m [1;33m[0m[0m
+[1;32m-> 1152[1;33m         [0mstr_expr[0m [1;33m=[0m [0m_recursive_to_string[0m[1;33m([0m[0mself[0m[1;33m.[0m[0m_exprrepr[0m[1;33m,[0m [0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   1153[0m [1;33m[0m[0m
+[0;32m   1154[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\utilities\lambdify.py[0m in [0;36m_recursive_to_string[1;34m(doprint, arg)[0m
+[0;32m    954[0m [1;33m[0m[0m
+[0;32m    955[0m     [1;32mif[0m [0misinstance[0m[1;33m([0m[0marg[0m[1;33m,[0m [1;33m([0m[0mBasic[0m[1;33m,[0m [0mMatrixOperations[0m[1;33m)[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 956[1;33m         [1;32mreturn[0m [0mdoprint[0m[1;33m([0m[0marg[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    957[0m     [1;32melif[0m [0miterable[0m[1;33m([0m[0marg[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    958[0m         [1;32mif[0m [0misinstance[0m[1;33m([0m[0marg[0m[1;33m,[0m [0mlist[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36mdoprint[1;34m(self, expr, assign_to)[0m
+[0;32m    148[0m         [0mself[0m[1;33m.[0m[0m_number_symbols[0m [1;33m=[0m [0mset[0m[1;33m([0m[1;33m)[0m  [1;31m# type: tSet[tTuple[Expr, Float]][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    149[0m [1;33m[0m[0m
+[1;32m--> 150[1;33m         [0mlines[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m.[0m[0msplitlines[0m[1;33m([0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    151[0m [1;33m[0m[0m
+[0;32m    152[0m         [1;31m# format the output[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36m_print_Add[1;34m(self, expr, order)[0m
+[0;32m     56[0m         [0ml[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m     57[0m         [1;32mfor[0m [0mterm[0m [1;32min[0m [0mterms[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 58[1;33m             [0mt[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mterm[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     59[0m             [1;32mif[0m [0mt[0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'-'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     60[0m                 [0msign[0m [1;33m=[0m [1;34m"-"[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m_print_Mul[1;34m(self, expr)[0m
+[0;32m    543[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 545[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    546[0m         [0mb_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0mb[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m<listcomp>[1;34m(.0)[0m
+[0;32m    543[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 545[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    546[0m         [0mb_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0mb[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36mparenthesize[1;34m(self, item, level, strict)[0m
+[0;32m     35[0m     [1;32mdef[0m [0mparenthesize[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mitem[0m[1;33m,[0m [0mlevel[0m[1;33m,[0m [0mstrict[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     36[0m         [1;32mif[0m [1;33m([0m[0mprecedence[0m[1;33m([0m[0mitem[0m[1;33m)[0m [1;33m<[0m [0mlevel[0m[1;33m)[0m [1;32mor[0m [1;33m([0m[1;33m([0m[1;32mnot[0m [0mstrict[0m[1;33m)[0m [1;32mand[0m [0mprecedence[0m[1;33m([0m[0mitem[0m[1;33m)[0m [1;33m<=[0m [0mlevel[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 37[1;33m             [1;32mreturn[0m [1;34m"(%s)"[0m [1;33m%[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     38[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     39[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36m_print_Add[1;34m(self, expr, order)[0m
+[0;32m     56[0m         [0ml[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m     57[0m         [1;32mfor[0m [0mterm[0m [1;32min[0m [0mterms[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 58[1;33m             [0mt[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mterm[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     59[0m             [1;32mif[0m [0mt[0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'-'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     60[0m                 [0msign[0m [1;33m=[0m [1;34m"-"[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m_print_Mul[1;34m(self, expr)[0m
+[0;32m    543[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 545[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    546[0m         [0mb_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0mb[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m<listcomp>[1;34m(.0)[0m
+[0;32m    543[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 545[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    546[0m         [0mb_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0mb[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36mparenthesize[1;34m(self, item, level, strict)[0m
+[0;32m     35[0m     [1;32mdef[0m [0mparenthesize[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mitem[0m[1;33m,[0m [0mlevel[0m[1;33m,[0m [0mstrict[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     36[0m         [1;32mif[0m [1;33m([0m[0mprecedence[0m[1;33m([0m[0mitem[0m[1;33m)[0m [1;33m<[0m [0mlevel[0m[1;33m)[0m [1;32mor[0m [1;33m([0m[1;33m([0m[1;32mnot[0m [0mstrict[0m[1;33m)[0m [1;32mand[0m [0mprecedence[0m[1;33m([0m[0mitem[0m[1;33m)[0m [1;33m<=[0m [0mlevel[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 37[1;33m             [1;32mreturn[0m [1;34m"(%s)"[0m [1;33m%[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     38[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     39[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36m_print_Add[1;34m(self, expr, order)[0m
+[0;32m     56[0m         [0ml[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m     57[0m         [1;32mfor[0m [0mterm[0m [1;32min[0m [0mterms[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 58[1;33m             [0mt[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mterm[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     59[0m             [1;32mif[0m [0mt[0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'-'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     60[0m                 [0msign[0m [1;33m=[0m [1;34m"-"[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m_print_Mul[1;34m(self, expr)[0m
+[0;32m    541[0m             [1;31m# an operator precedence between multiplication and exponentiation,[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    542[0m             [1;31m# so we use this to compute a weight.[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 543[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    545[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36mparenthesize[1;34m(self, item, level, strict)[0m
+[0;32m     37[0m             [1;32mreturn[0m [1;34m"(%s)"[0m [1;33m%[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     38[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 39[1;33m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     40[0m [1;33m[0m[0m
+[0;32m     41[0m     [1;32mdef[0m [0mstringify[0m[1;33m([0m[0mself[0m[1;33m,[0m [0margs[0m[1;33m,[0m [0msep[0m[1;33m,[0m [0mlevel[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\numpy.py[0m in [0;36m_print_re[1;34m(self, expr)[0m
+[0;32m    229[0m [1;33m[0m[0m
+[0;32m    230[0m     [1;32mdef[0m [0m_print_re[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mexpr[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 231[1;33m         [1;32mreturn[0m [1;34m"%s(%s)"[0m [1;33m%[0m [1;33m([0m[0mself[0m[1;33m.[0m[0m_module_format[0m[1;33m([0m[0mself[0m[1;33m.[0m[0m_module[0m [1;33m+[0m [1;34m'.real'[0m[1;33m)[0m[1;33m,[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mexpr[0m[1;33m.[0m[0margs[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    232[0m [1;33m[0m[0m
+[0;32m    233[0m     [1;32mdef[0m [0m_print_sinc[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mexpr[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m_print_Mul[1;34m(self, expr)[0m
+[0;32m    543[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 545[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    546[0m         [0mb_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0mb[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\codeprinter.py[0m in [0;36m<listcomp>[1;34m(.0)[0m
+[0;32m    543[0m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0ma[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m,[0m [1;36m0.5[0m[1;33m*[0m[1;33m([0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Pow"[0m[1;33m][0m[1;33m+[0m[0mPRECEDENCE[0m[1;33m[[0m[1;34m"Mul"[0m[1;33m][0m[1;33m)[0m[1;33m)[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    544[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 545[1;33m             [0ma_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0ma[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    546[0m         [0mb_str[0m [1;33m=[0m [1;33m[[0m[0mself[0m[1;33m.[0m[0mparenthesize[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mprec[0m[1;33m)[0m [1;32mfor[0m [0mx[0m [1;32min[0m [0mb[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\str.py[0m in [0;36mparenthesize[1;34m(self, item, level, strict)[0m
+[0;32m     37[0m             [1;32mreturn[0m [1;34m"(%s)"[0m [1;33m%[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     38[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 39[1;33m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0m_print[0m[1;33m([0m[0mitem[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     40[0m [1;33m[0m[0m
+[0;32m     41[0m     [1;32mdef[0m [0mstringify[0m[1;33m([0m[0mself[0m[1;33m,[0m [0margs[0m[1;33m,[0m [0msep[0m[1;33m,[0m [0mlevel[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\printer.py[0m in [0;36m_print[1;34m(self, expr, **kwargs)[0m
+[0;32m    329[0m                 [0mprintmethod[0m [1;33m=[0m [0mgetattr[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mprintmethodname[0m[1;33m,[0m [1;32mNone[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    330[0m                 [1;32mif[0m [0mprintmethod[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 331[1;33m                     [1;32mreturn[0m [0mprintmethod[0m[1;33m([0m[0mexpr[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    332[0m             [1;31m# Unknown object, fall back to the emptyPrinter.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    333[0m             [1;32mreturn[0m [0mself[0m[1;33m.[0m[0memptyPrinter[0m[1;33m([0m[0mexpr[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\numpy.py[0m in [0;36m_print_Integral[1;34m(self, e)[0m
+[0;32m    452[0m [1;33m[0m[0m
+[0;32m    453[0m     [1;32mdef[0m [0m_print_Integral[0m[1;33m([0m[0mself[0m[1;33m,[0m [0me[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 454[1;33m         [0mintegration_vars[0m[1;33m,[0m [0mlimits[0m [1;33m=[0m [0m_unpack_integral_limits[0m[1;33m([0m[0me[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    455[0m [1;33m[0m[0m
+[0;32m    456[0m         [1;32mif[0m [0mlen[0m[1;33m([0m[0mlimits[0m[1;33m)[0m [1;33m==[0m [1;36m1[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\printing\pycode.py[0m in [0;36m_unpack_integral_limits[1;34m(integral_expr)[0m
+[0;32m    546[0m             [0mintegration_var[0m[1;33m,[0m [0mlower_limit[0m[1;33m,[0m [0mupper_limit[0m [1;33m=[0m [0mintegration_range[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    547[0m         [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 548[1;33m             [1;32mraise[0m [0mNotImplementedError[0m[1;33m([0m[1;34m"Only definite integrals are supported"[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    549[0m         [0mintegration_vars[0m[1;33m.[0m[0mappend[0m[1;33m([0m[0mintegration_var[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    550[0m         [0mlimits[0m[1;33m.[0m[0mappend[0m[1;33m([0m[1;33m([0m[0mlower_limit[0m[1;33m,[0m [0mupper_limit[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;31mNotImplementedError[0m: Only definite integrals are supported
+NotImplementedError: Only definite integrals are supported
+

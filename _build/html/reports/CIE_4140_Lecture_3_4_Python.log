@@ -1,0 +1,247 @@
+Traceback (most recent call last):
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\tomvanwoudenbe\Anaconda3\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+sp.fourier_transform(Equation_of_Motion,t,phi)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mTypeError[0m                                 Traceback (most recent call last)
+[1;32m~\AppData\Local\Temp\ipykernel_13648\1221906460.py[0m in [0;36m<module>[1;34m[0m
+[1;32m----> 1[1;33m [0msp[0m[1;33m.[0m[0mfourier_transform[0m[1;33m([0m[0mEquation_of_Motion[0m[1;33m,[0m[0mt[0m[1;33m,[0m[0mphi[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36mfourier_transform[1;34m(f, x, k, **hints)[0m
+[0;32m   2256[0m     [0mmellin_transform[0m[1;33m,[0m [0mlaplace_transform[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   2257[0m     """
+[1;32m-> 2258[1;33m     [1;32mreturn[0m [0mFourierTransform[0m[1;33m([0m[0mf[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mk[0m[1;33m)[0m[1;33m.[0m[0mdoit[0m[1;33m([0m[1;33m**[0m[0mhints[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   2259[0m [1;33m[0m[0m
+[0;32m   2260[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36mdoit[1;34m(self, **hints)[0m
+[0;32m    179[0m         [1;32mif[0m [0mfn[0m[1;33m.[0m[0mis_Add[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    180[0m             [0mhints[0m[1;33m[[0m[1;34m'needeval'[0m[1;33m][0m [1;33m=[0m [0mneedeval[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 181[1;33m             res = [self.__class__(*([x] + list(self.args[1:]))).doit(**hints)
+[0m[0;32m    182[0m                    for x in fn.args]
+[0;32m    183[0m             [0mextra[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36m<listcomp>[1;34m(.0)[0m
+[0;32m    179[0m         [1;32mif[0m [0mfn[0m[1;33m.[0m[0mis_Add[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    180[0m             [0mhints[0m[1;33m[[0m[1;34m'needeval'[0m[1;33m][0m [1;33m=[0m [0mneedeval[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 181[1;33m             res = [self.__class__(*([x] + list(self.args[1:]))).doit(**hints)
+[0m[0;32m    182[0m                    for x in fn.args]
+[0;32m    183[0m             [0mextra[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36mdoit[1;34m(self, **hints)[0m
+[0;32m    172[0m         [0mhints[0m[1;33m[[0m[1;34m'simplify'[0m[1;33m][0m [1;33m=[0m [0msimplify[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    173[0m [1;33m[0m[0m
+[1;32m--> 174[1;33m         [0mfn[0m[1;33m,[0m [0mT[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_try_directly[0m[1;33m([0m[1;33m**[0m[0mhints[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    175[0m [1;33m[0m[0m
+[0;32m    176[0m         [1;32mif[0m [0mT[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36m_try_directly[1;34m(self, **hints)[0m
+[0;32m    136[0m         [1;32mif[0m [0mtry_directly[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    137[0m             [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 138[1;33m                 T = self._compute_transform(self.function,
+[0m[0;32m    139[0m                     self.function_variable, self.transform_variable, **hints)
+[0;32m    140[0m             [1;32mexcept[0m [0mIntegralTransformError[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36m_compute_transform[1;34m(self, f, x, k, **hints)[0m
+[0;32m   2188[0m [1;33m[0m[0m
+[0;32m   2189[0m     [1;32mdef[0m [0m_compute_transform[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mf[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mk[0m[1;33m,[0m [1;33m**[0m[0mhints[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 2190[1;33m         return _fourier_transform(f, x, k,
+[0m[0;32m   2191[0m                                   [0mself[0m[1;33m.[0m[0ma[0m[1;33m([0m[1;33m)[0m[1;33m,[0m [0mself[0m[1;33m.[0m[0mb[0m[1;33m([0m[1;33m)[0m[1;33m,[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   2192[0m                                   self.__class__._name, **hints)
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36mwrapper[1;34m(noconds, *args, **kwargs)[0m
+[0;32m    254[0m         [1;33m@[0m[0mwraps[0m[1;33m([0m[0mfunc[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    255[0m         [1;32mdef[0m [0mwrapper[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [0mnoconds[0m[1;33m=[0m[0mdefault[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 256[1;33m             [0mres[0m [1;33m=[0m [0mfunc[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    257[0m             [1;32mif[0m [0mnoconds[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    258[0m                 [1;32mreturn[0m [0mres[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py[0m in [0;36m_fourier_transform[1;34m(f, x, k, a, b, name, simplify)[0m
+[0;32m   2162[0m         [1;32mreturn[0m [0m_simplify[0m[1;33m([0m[0mF[0m[1;33m,[0m [0msimplify[0m[1;33m)[0m[1;33m,[0m [0mS[0m[1;33m.[0m[0mtrue[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   2163[0m [1;33m[0m[0m
+[1;32m-> 2164[1;33m     [0mintegral_f[0m [1;33m=[0m [0mintegrate[0m[1;33m([0m[0mf[0m[1;33m,[0m [1;33m([0m[0mx[0m[1;33m,[0m [0mS[0m[1;33m.[0m[0mNegativeInfinity[0m[1;33m,[0m [0mS[0m[1;33m.[0m[0mInfinity[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   2165[0m     [1;32mif[0m [0mintegral_f[0m [1;32min[0m [1;33m([0m[0mS[0m[1;33m.[0m[0mNegativeInfinity[0m[1;33m,[0m [0mS[0m[1;33m.[0m[0mInfinity[0m[1;33m,[0m [0mS[0m[1;33m.[0m[0mNaN[0m[1;33m)[0m [1;32mor[0m [0mintegral_f[0m[1;33m.[0m[0mhas[0m[1;33m([0m[0mIntegral[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   2166[0m         [1;32mraise[0m [0mIntegralTransformError[0m[1;33m([0m[0mname[0m[1;33m,[0m [0mf[0m[1;33m,[0m [1;34m'function not integrable on real axis'[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py[0m in [0;36mintegrate[1;34m(meijerg, conds, risch, heurisch, manual, *args, **kwargs)[0m
+[0;32m   1564[0m [1;33m[0m[0m
+[0;32m   1565[0m     [1;32mif[0m [0misinstance[0m[1;33m([0m[0mintegral[0m[1;33m,[0m [0mIntegral[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 1566[1;33m         [1;32mreturn[0m [0mintegral[0m[1;33m.[0m[0mdoit[0m[1;33m([0m[1;33m**[0m[0mdoit_flags[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   1567[0m     [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1568[0m         new_args = [a.doit(**doit_flags) if isinstance(a, Integral) else a
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py[0m in [0;36mdoit[1;34m(self, **hints)[0m
+[0;32m    710[0m                         [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    711[0m                             [0mevalued[0m [1;33m=[0m [0mAdd[0m[1;33m([0m[1;33m*[0m[0mothers[0m[1;33m)[0m[1;33m.[0m[0m_eval_interval[0m[1;33m([0m[0mx[0m[1;33m,[0m [0ma[0m[1;33m,[0m [0mb[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 712[1;33m                             [0mevalued_pw[0m [1;33m=[0m [0mpiecewise_fold[0m[1;33m([0m[0mAdd[0m[1;33m([0m[1;33m*[0m[0mpiecewises[0m[1;33m)[0m[1;33m)[0m[1;33m.[0m[0m_eval_interval[0m[1;33m([0m[0mx[0m[1;33m,[0m [0ma[0m[1;33m,[0m [0mb[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    713[0m                             [0mfunction[0m [1;33m=[0m [0muneval[0m [1;33m+[0m [0mevalued[0m [1;33m+[0m [0mevalued_pw[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    714[0m                         [1;32mexcept[0m [0mNotImplementedError[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\functions\elementary\piecewise.py[0m in [0;36m_eval_interval[1;34m(self, sym, a, b, _first)[0m
+[0;32m    647[0m                 [1;31m# TODO simplify hi <= upto[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    648[0m                 [1;32mreturn[0m [0mPiecewise[0m[1;33m([0m[1;33m([0m[0msum[0m[1;33m,[0m [0mhi[0m [1;33m<=[0m [0mupto[0m[1;33m)[0m[1;33m,[0m [1;33m([0m[0mUndefined[0m[1;33m,[0m [1;32mTrue[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 649[1;33m             [0msum[0m [1;33m+=[0m [0mabei[0m[1;33m[[0m[0mi[0m[1;33m][0m[1;33m[[0m[1;33m-[0m[1;36m2[0m[1;33m][0m[1;33m.[0m[0m_eval_interval[0m[1;33m([0m[0mx[0m[1;33m,[0m [0ma[0m[1;33m,[0m [0mb[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    650[0m             [0mupto[0m [1;33m=[0m [0mb[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    651[0m         [1;32mreturn[0m [0msum[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\expr.py[0m in [0;36m_eval_interval[1;34m(self, x, a, b)[0m
+[0;32m    942[0m             [1;32mreturn[0m [0mS[0m[1;33m.[0m[0mZero[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    943[0m [1;33m[0m[0m
+[1;32m--> 944[1;33m         [0mA[0m [1;33m=[0m [0m_eval_endpoint[0m[1;33m([0m[0mleft[0m[1;33m=[0m[1;32mTrue[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    945[0m         [1;32mif[0m [0mA[0m [1;32mis[0m [0mS[0m[1;33m.[0m[0mNaN[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    946[0m             [1;32mreturn[0m [0mA[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\expr.py[0m in [0;36m_eval_endpoint[1;34m(left)[0m
+[0;32m    931[0m                          S.ComplexInfinity, AccumBounds):
+[0;32m    932[0m                     [1;32mif[0m [1;33m([0m[0ma[0m [1;33m<[0m [0mb[0m[1;33m)[0m [1;33m!=[0m [1;32mFalse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 933[1;33m                         [0mC[0m [1;33m=[0m [0mlimit[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mc[0m[1;33m,[0m [1;34m"+"[0m [1;32mif[0m [0mleft[0m [1;32melse[0m [1;34m"-"[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    934[0m                     [1;32melse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    935[0m                         [0mC[0m [1;33m=[0m [0mlimit[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mc[0m[1;33m,[0m [1;34m"-"[0m [1;32mif[0m [0mleft[0m [1;32melse[0m [1;34m"+"[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\series\limits.py[0m in [0;36mlimit[1;34m(e, z, z0, dir)[0m
+[0;32m     65[0m     """
+[0;32m     66[0m [1;33m[0m[0m
+[1;32m---> 67[1;33m     [1;32mreturn[0m [0mLimit[0m[1;33m([0m[0me[0m[1;33m,[0m [0mz[0m[1;33m,[0m [0mz0[0m[1;33m,[0m [0mdir[0m[1;33m)[0m[1;33m.[0m[0mdoit[0m[1;33m([0m[0mdeep[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     68[0m [1;33m[0m[0m
+[0;32m     69[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\series\limits.py[0m in [0;36mdoit[1;34m(self, **hints)[0m
+[0;32m    304[0m             [0mnewe[0m [1;33m=[0m [0me[0m[1;33m.[0m[0msubs[0m[1;33m([0m[0mz[0m[1;33m,[0m [0mz[0m [1;33m+[0m [0mz0[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    305[0m         [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 306[1;33m             [0mcoeff[0m[1;33m,[0m [0mex[0m [1;33m=[0m [0mnewe[0m[1;33m.[0m[0mleadterm[0m[1;33m([0m[0mz[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    307[0m         [1;32mexcept[0m [1;33m([0m[0mValueError[0m[1;33m,[0m [0mNotImplementedError[0m[1;33m,[0m [0mPoleError[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    308[0m             [1;31m# The NotImplementedError catching is for custom functions[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\expr.py[0m in [0;36mleadterm[1;34m(self, x, logx, cdir)[0m
+[0;32m   3478[0m         [1;32mfrom[0m [1;33m.[0m[0msymbol[0m [1;32mimport[0m [0mDummy[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3479[0m         [1;32mfrom[0m [0msympy[0m[1;33m.[0m[0mfunctions[0m[1;33m.[0m[0melementary[0m[1;33m.[0m[0mexponential[0m [1;32mimport[0m [0mlog[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 3480[1;33m         [0ml[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0mas_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   3481[0m         [0md[0m [1;33m=[0m [0mDummy[0m[1;33m([0m[1;34m'logx'[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3482[0m         [1;32mif[0m [0ml[0m[1;33m.[0m[0mhas[0m[1;33m([0m[0mlog[0m[1;33m([0m[0mx[0m[1;33m)[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\cache.py[0m in [0;36mwrapper[1;34m(*args, **kwargs)[0m
+[0;32m     68[0m         [1;32mdef[0m [0mwrapper[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     69[0m             [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 70[1;33m                 [0mretval[0m [1;33m=[0m [0mcfunc[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     71[0m             [1;32mexcept[0m [0mTypeError[0m [1;32mas[0m [0me[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     72[0m                 [1;32mif[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m [1;32mor[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'unhashable type:'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\expr.py[0m in [0;36mas_leading_term[1;34m(self, logx, cdir, *symbols)[0m
+[0;32m   3441[0m         [1;32mif[0m [0mx[0m [1;32mnot[0m [1;32min[0m [0mself[0m[1;33m.[0m[0mfree_symbols[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3442[0m             [1;32mreturn[0m [0mself[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 3443[1;33m         [0mobj[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_eval_as_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   3444[0m         [1;32mif[0m [0mobj[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3445[0m             [1;32mfrom[0m [0msympy[0m[1;33m.[0m[0msimplify[0m[1;33m.[0m[0mpowsimp[0m [1;32mimport[0m [0mpowsimp[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\mul.py[0m in [0;36m_eval_as_leading_term[1;34m(self, x, logx, cdir)[0m
+[0;32m   2020[0m [1;33m[0m[0m
+[0;32m   2021[0m     [1;32mdef[0m [0m_eval_as_leading_term[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[1;32mNone[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 2022[1;33m         [1;32mreturn[0m [0mself[0m[1;33m.[0m[0mfunc[0m[1;33m([0m[1;33m*[0m[1;33m[[0m[0mt[0m[1;33m.[0m[0mas_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m [1;32mfor[0m [0mt[0m [1;32min[0m [0mself[0m[1;33m.[0m[0margs[0m[1;33m][0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   2023[0m [1;33m[0m[0m
+[0;32m   2024[0m     [1;32mdef[0m [0m_eval_conjugate[0m[1;33m([0m[0mself[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\mul.py[0m in [0;36m<listcomp>[1;34m(.0)[0m
+[0;32m   2020[0m [1;33m[0m[0m
+[0;32m   2021[0m     [1;32mdef[0m [0m_eval_as_leading_term[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[1;32mNone[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 2022[1;33m         [1;32mreturn[0m [0mself[0m[1;33m.[0m[0mfunc[0m[1;33m([0m[1;33m*[0m[1;33m[[0m[0mt[0m[1;33m.[0m[0mas_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m [1;32mfor[0m [0mt[0m [1;32min[0m [0mself[0m[1;33m.[0m[0margs[0m[1;33m][0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   2023[0m [1;33m[0m[0m
+[0;32m   2024[0m     [1;32mdef[0m [0m_eval_conjugate[0m[1;33m([0m[0mself[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\cache.py[0m in [0;36mwrapper[1;34m(*args, **kwargs)[0m
+[0;32m     68[0m         [1;32mdef[0m [0mwrapper[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     69[0m             [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 70[1;33m                 [0mretval[0m [1;33m=[0m [0mcfunc[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     71[0m             [1;32mexcept[0m [0mTypeError[0m [1;32mas[0m [0me[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     72[0m                 [1;32mif[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m [1;32mor[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'unhashable type:'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\expr.py[0m in [0;36mas_leading_term[1;34m(self, logx, cdir, *symbols)[0m
+[0;32m   3441[0m         [1;32mif[0m [0mx[0m [1;32mnot[0m [1;32min[0m [0mself[0m[1;33m.[0m[0mfree_symbols[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3442[0m             [1;32mreturn[0m [0mself[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 3443[1;33m         [0mobj[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_eval_as_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   3444[0m         [1;32mif[0m [0mobj[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3445[0m             [1;32mfrom[0m [0msympy[0m[1;33m.[0m[0msimplify[0m[1;33m.[0m[0mpowsimp[0m [1;32mimport[0m [0mpowsimp[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\functions\special\hyper.py[0m in [0;36m_eval_as_leading_term[1;34m(self, x, logx, cdir)[0m
+[0;32m    697[0m     [1;32mdef[0m [0m_eval_as_leading_term[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[1;32mNone[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    698[0m         [1;32mfrom[0m [0msympy[0m[1;33m.[0m[0msimplify[0m[1;33m.[0m[0mhyperexpand[0m [1;32mimport[0m [0mhyperexpand[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 699[1;33m         [1;32mreturn[0m [0mhyperexpand[0m[1;33m([0m[0mself[0m[1;33m)[0m[1;33m.[0m[0mas_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    700[0m [1;33m[0m[0m
+[0;32m    701[0m     [1;32mdef[0m [0mintegrand[0m[1;33m([0m[0mself[0m[1;33m,[0m [0ms[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\cache.py[0m in [0;36mwrapper[1;34m(*args, **kwargs)[0m
+[0;32m     68[0m         [1;32mdef[0m [0mwrapper[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     69[0m             [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 70[1;33m                 [0mretval[0m [1;33m=[0m [0mcfunc[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     71[0m             [1;32mexcept[0m [0mTypeError[0m [1;32mas[0m [0me[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     72[0m                 [1;32mif[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m [1;32mor[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'unhashable type:'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\expr.py[0m in [0;36mas_leading_term[1;34m(self, logx, cdir, *symbols)[0m
+[0;32m   3441[0m         [1;32mif[0m [0mx[0m [1;32mnot[0m [1;32min[0m [0mself[0m[1;33m.[0m[0mfree_symbols[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3442[0m             [1;32mreturn[0m [0mself[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 3443[1;33m         [0mobj[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_eval_as_leading_term[0m[1;33m([0m[0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[0mlogx[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[0mcdir[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   3444[0m         [1;32mif[0m [0mobj[0m [1;32mis[0m [1;32mnot[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   3445[0m             [1;32mfrom[0m [0msympy[0m[1;33m.[0m[0msimplify[0m[1;33m.[0m[0mpowsimp[0m [1;32mimport[0m [0mpowsimp[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\functions\elementary\piecewise.py[0m in [0;36m_eval_as_leading_term[1;34m(self, x, logx, cdir)[0m
+[0;32m    313[0m     [1;32mdef[0m [0m_eval_as_leading_term[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mx[0m[1;33m,[0m [0mlogx[0m[1;33m=[0m[1;32mNone[0m[1;33m,[0m [0mcdir[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    314[0m         [1;32mfor[0m [0me[0m[1;33m,[0m [0mc[0m [1;32min[0m [0mself[0m[1;33m.[0m[0margs[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 315[1;33m             [1;32mif[0m [0mc[0m [1;33m==[0m [1;32mTrue[0m [1;32mor[0m [0mc[0m[1;33m.[0m[0msubs[0m[1;33m([0m[0mx[0m[1;33m,[0m [1;36m0[0m[1;33m)[0m [1;33m==[0m [1;32mTrue[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    316[0m                 [1;32mreturn[0m [0me[0m[1;33m.[0m[0mas_leading_term[0m[1;33m([0m[0mx[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    317[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\basic.py[0m in [0;36msubs[1;34m(self, *args, **kwargs)[0m
+[0;32m    991[0m             [0mrv[0m [1;33m=[0m [0mself[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    992[0m             [1;32mfor[0m [0mold[0m[1;33m,[0m [0mnew[0m [1;32min[0m [0msequence[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 993[1;33m                 [0mrv[0m [1;33m=[0m [0mrv[0m[1;33m.[0m[0m_subs[0m[1;33m([0m[0mold[0m[1;33m,[0m [0mnew[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    994[0m                 [1;32mif[0m [1;32mnot[0m [0misinstance[0m[1;33m([0m[0mrv[0m[1;33m,[0m [0mBasic[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    995[0m                     [1;32mbreak[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\cache.py[0m in [0;36mwrapper[1;34m(*args, **kwargs)[0m
+[0;32m     68[0m         [1;32mdef[0m [0mwrapper[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     69[0m             [1;32mtry[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m---> 70[1;33m                 [0mretval[0m [1;33m=[0m [0mcfunc[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m     71[0m             [1;32mexcept[0m [0mTypeError[0m [1;32mas[0m [0me[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m     72[0m                 [1;32mif[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m [1;32mor[0m [1;32mnot[0m [0me[0m[1;33m.[0m[0margs[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m.[0m[0mstartswith[0m[1;33m([0m[1;34m'unhashable type:'[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\basic.py[0m in [0;36m_subs[1;34m(self, old, new, **hints)[0m
+[0;32m   1105[0m         [0mrv[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0m_eval_subs[0m[1;33m([0m[0mold[0m[1;33m,[0m [0mnew[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1106[0m         [1;32mif[0m [0mrv[0m [1;32mis[0m [1;32mNone[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 1107[1;33m             [0mrv[0m [1;33m=[0m [0mfallback[0m[1;33m([0m[0mself[0m[1;33m,[0m [0mold[0m[1;33m,[0m [0mnew[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   1108[0m         [1;32mreturn[0m [0mrv[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1109[0m [1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\basic.py[0m in [0;36mfallback[1;34m(self, old, new)[0m
+[0;32m   1082[0m                     [0margs[0m[1;33m[[0m[0mi[0m[1;33m][0m [1;33m=[0m [0marg[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1083[0m             [1;32mif[0m [0mhit[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m-> 1084[1;33m                 [0mrv[0m [1;33m=[0m [0mself[0m[1;33m.[0m[0mfunc[0m[1;33m([0m[1;33m*[0m[0margs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m   1085[0m                 [0mhack2[0m [1;33m=[0m [0mhints[0m[1;33m.[0m[0mget[0m[1;33m([0m[1;34m'hack2'[0m[1;33m,[0m [1;32mFalse[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0;32m   1086[0m                 [1;32mif[0m [0mhack2[0m [1;32mand[0m [0mself[0m[1;33m.[0m[0mis_Mul[0m [1;32mand[0m [1;32mnot[0m [0mrv[0m[1;33m.[0m[0mis_Mul[0m[1;33m:[0m  [1;31m# 2-arg hack[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m~\Anaconda3\lib\site-packages\sympy\core\relational.py[0m in [0;36m__new__[1;34m(cls, lhs, rhs, **options)[0m
+[0;32m    832[0m             [1;32mfor[0m [0mme[0m [1;32min[0m [1;33m([0m[0mlhs[0m[1;33m,[0m [0mrhs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    833[0m                 [1;32mif[0m [0mme[0m[1;33m.[0m[0mis_extended_real[0m [1;32mis[0m [1;32mFalse[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[1;32m--> 834[1;33m                     [1;32mraise[0m [0mTypeError[0m[1;33m([0m[1;34m"Invalid comparison of non-real %s"[0m [1;33m%[0m [0mme[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+[0m[0;32m    835[0m                 [1;32mif[0m [0mme[0m [1;32mis[0m [0mS[0m[1;33m.[0m[0mNaN[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    836[0m                     [1;32mraise[0m [0mTypeError[0m[1;33m([0m[1;34m"Invalid NaN comparison"[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
+
+[1;31mTypeError[0m: Invalid comparison of non-real zoo
+TypeError: Invalid comparison of non-real zoo
+

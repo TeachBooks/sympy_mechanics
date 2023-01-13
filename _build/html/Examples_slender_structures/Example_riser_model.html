@@ -1,0 +1,1444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exampel riser model &#8212; SymPy instructions and examples</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example wheel on cable dirac" href="Example_wheel_on_cable_dirac.html" />
+    <link rel="prev" title="Constrained bending with tension" href="Constrained_bending_with_tension.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SymPy instructions and examples</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to this SymPy example and instruction book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Instruction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Instruction/Het_gebruik_van_Python_bij_ConstructieMechanica.html">
+   Het gebruik van Python bij Constructiemechanica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Instruction/SymPy_example_for_Structural_Mechanics_problems.html">
+   SymPy example for Structural Mechanics problems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Constructiemechanics 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html">
+   Basisgeval college statisch onbepaald met Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht.html">
+   Introductie SymPy voor Matrixframe opdracht
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode.html">
+   Introductie verplaatsingenmethode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_1.html">
+   Sympy voorbeeld 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_2.html">
+   Sympy voorbeeld 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_3.html">
+   Sympy voorbeeld 3
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Structural Mechanics 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Lecture-example-ODE.html">
+   Lecture example ODE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Vergelijking_methodes.html">
+   Vergelijking oplosmethodes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_1_work_and_energy.html">
+   Exercise 1 work and energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_6_Work_and_Energy.html">
+   Exercise 6 Work and Energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Taylor_approximation.html">
+   Taylor approximation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generic examples Structural Mechanics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger.html">
+   DV-SB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger-F.html">
+   DV-SB-ligger-F
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger.html">
+   DV-SOB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer.html">
+   DV-SOB-ligger-met-veer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/Vakwerk_SB.html">
+   Vakwerk_SB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/VGM-q-last.html">
+   VGM-q-last
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Base Structural Engineering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Exact_length_parabolic_cable.html">
+   Parabolic cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Example_Extension_week_1_strain_energy.html">
+   Example Extension week 1 strain energy#
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable.html">
+   Lecture 4 exercise 1 cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Taylor_series.html">
+   Taylor series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Wrinkler_element_definition.html">
+   Wrinkler element definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Variation_of_load_cable.html">
+   Variation of load cable
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Slender Structures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Assignment_bending_shear_beam_B.html">
+   Assignment bending shear beam B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Beam_with_varying_EI_and_q.html">
+   Beam with varying EI and q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Constrained_bending_with_tension.html">
+   Constrained bending with tension
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exampel riser model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Example_wheel_on_cable_dirac.html">
+   Example wheel on cable dirac
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Foundation_pile.html">
+   Foundation pile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Park_bridge_2018.html">
+   Park bridge 2018
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Timoshenko_Beam.html">
+   Timoshenko beam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Timoshenko_Beam_element_definition.html">
+   Timoshenko Beam element definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamics of Structures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_1_Python.html">
+   CIE_4140_Lecture_2_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_2_Python.html">
+   CIE_4140_Lecture_2_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_1_Python.html">
+   CIE_4140_Lecture_3_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_2_Python.html">
+   CIE_4140_Lecture_3_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_3_Python.html">
+   CIE_4140_Lecture_3_3_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python.html">
+   CIE_4140_Lecture_3_4_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python.html">
+   CIE4140_Lecture_13_Part_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python_seperate_q.html">
+   CIE4140_Lecture_13_Part_1_Python_seperate_q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_2_Python.html">
+   CIE4140_Lecture_13_Part_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_18_Part_1_Python.html">
+   CIE_4140_Lecture_18_Part_1_Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Other_examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Other_examples/Singularity_function_with_hinged_beam.html">
+   Singularity functions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Examples_slender_structures/Example_riser_model.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exampel riser model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-differences">
+   Finite differences
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#write-as-system-of-odes">
+   Write as system of ODEs
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exampel riser model</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exampel riser model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-differences">
+   Finite differences
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#write-as-system-of-odes">
+   Write as system of ODEs
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="exampel-riser-model">
+<h1>Exampel riser model<a class="headerlink" href="#exampel-riser-model" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w1&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">,</span> <span class="n">C4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2 C3 C4&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mf">3.6</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mi">45</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Area</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Volume</span> <span class="o">=</span> <span class="n">Area</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">7850</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Area</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Volume</span>
+<span class="n">EI</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mf">2e11</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1800</span>
+<span class="n">Ho</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">1000000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">H1</span> <span class="o">=</span> <span class="n">Ho</span>
+<span class="n">diffeq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-</span><span class="n">H1</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">q</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">)</span>
+
+<span class="n">w1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">)</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
+
+<span class="n">phi1</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">kappa1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">M1</span> <span class="o">=</span> <span class="n">EI</span> <span class="o">*</span> <span class="n">kappa1</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">V1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">)</span><span class="o">-</span><span class="n">phi1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">)</span><span class="o">*</span><span class="n">H1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">),</span>
+               <span class="p">(</span><span class="n">C1</span> <span class="p">,</span> <span class="n">C2</span> <span class="p">,</span> <span class="n">C3</span> <span class="p">,</span> <span class="n">C4</span> <span class="p">))</span>
+<span class="n">w1_sol</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w1_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - 12000000 \frac{d^{2}}{d x^{2}} \operatorname{w_{1}}{\left(x \right)} + \frac{202209199875 \pi \frac{d^{4}}{d x^{4}} \operatorname{w_{1}}{\left(x \right)}}{4} = 1800\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle C_{1} + C_{2} x + C_{3} e^{- \frac{160 \sqrt{3698385} x}{19971279 \sqrt{\pi}}} + C_{4} e^{\frac{160 \sqrt{3698385} x}{19971279 \sqrt{\pi}}} - \frac{3 x^{2}}{40000}\]</div>
+<img alt="../_images/Example_riser_model_1_2.png" src="../_images/Example_riser_model_1_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w1&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">,</span> <span class="n">C4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2 C3 C4&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mf">3.6</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mi">45</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Area</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Volume</span> <span class="o">=</span> <span class="n">Area</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">7850</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Area</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Volume</span>
+<span class="n">EI</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mf">2e11</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1800</span>
+<span class="n">Ho</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">1000000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">H1</span> <span class="o">=</span> <span class="n">Ho</span>
+<span class="n">diffeq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-</span><span class="n">H1</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">q</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">)</span>
+
+<span class="n">bcs</span><span class="o">=</span><span class="p">{</span><span class="n">w1</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="mi">0</span> <span class="p">,</span>
+     <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="p">,</span>
+     <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="p">,</span>
+     <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">EI</span> <span class="o">*</span> <span class="n">H1</span> <span class="o">*</span> <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">L</span><span class="p">)}</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">,</span> <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">ics</span><span class="o">=</span><span class="n">bcs</span><span class="p">)</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w1</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - 12000000 \frac{d^{2}}{d x^{2}} \operatorname{w_{1}}{\left(x \right)} + \frac{202209199875 \pi \frac{d^{4}}{d x^{4}} \operatorname{w_{1}}{\left(x \right)}}{4} = 1800\]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_22492</span>\<span class="mf">636833250.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>      <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>      <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">EI</span> <span class="o">*</span> <span class="n">H1</span> <span class="o">*</span> <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">L</span><span class="p">)}</span>
+<span class="ne">---&gt; </span><span class="mi">28</span> <span class="n">w1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">,</span> <span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">ics</span><span class="o">=</span><span class="n">bcs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">rhs</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">display</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\ode.py</span> in <span class="ni">dsolve</span><span class="nt">(eq, func, hint, simplify, ics, xi, eta, x0, n, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">603</span> 
+<span class="g g-Whitespace">    </span><span class="mi">604</span>         <span class="c1"># See the docstring of _desolve for more details.</span>
+<span class="ne">--&gt; </span><span class="mi">605</span>         <span class="n">hints</span> <span class="o">=</span> <span class="n">_desolve</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span>             <span class="n">hint</span><span class="o">=</span><span class="n">hint</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xi</span><span class="o">=</span><span class="n">xi</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ode&#39;</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="n">ics</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span>             <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\deutils.py</span> in <span class="ni">_desolve</span><span class="nt">(eq, func, hint, ics, simplify, prep, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>     <span class="c1"># recursive calls.</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;classify&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">209</span>         <span class="n">hints</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="n">ics</span><span class="p">,</span> <span class="n">xi</span><span class="o">=</span><span class="n">xi</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">n</span><span class="o">=</span><span class="n">terms</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">hint</span><span class="o">=</span><span class="n">hint</span><span class="p">,</span> <span class="n">prep</span><span class="o">=</span><span class="n">prep</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\ode.py</span> in <span class="ni">classify_ode</span><span class="nt">(eq, func, dict, ics, prep, xi, eta, n, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1002</span>                     <span class="n">boundary</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">temp</span><span class="p">:</span> <span class="n">new</span><span class="p">,</span> <span class="n">temp</span> <span class="o">+</span> <span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="n">ics</span><span class="p">[</span><span class="n">funcarg</span><span class="p">]})</span>
+<span class="g g-Whitespace">   </span><span class="mi">1003</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1004</span>                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Enter valid boundary conditions for Derivatives&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1005</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1006</span> 
+
+<span class="ne">ValueError</span>: Enter valid boundary conditions for Derivatives
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w2&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">C5</span><span class="p">,</span> <span class="n">C6</span><span class="p">,</span> <span class="n">C7</span><span class="p">,</span> <span class="n">C8</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C5 C6 C7 C8&#39;</span><span class="p">)</span>
+
+<span class="n">H2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ho</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="n">x</span>
+<span class="n">diffeq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-</span><span class="n">H2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">q</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">diffeq2</span><span class="p">)</span>
+
+<span class="n">w2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">diffeq2</span><span class="p">,</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \left(\frac{876663 \pi x}{80} - \frac{13149945 \pi}{4} + 12000000\right) \frac{d^{2}}{d x^{2}} \operatorname{w_{2}}{\left(x \right)} - \frac{876663 \pi \frac{d}{d x} \operatorname{w_{2}}{\left(x \right)}}{80} + \frac{202209199875 \pi \frac{d^{4}}{d x^{4}} \operatorname{w_{2}}{\left(x \right)}}{4} = 1800\]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_272</span>\<span class="mf">2748669779.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">display</span><span class="p">(</span><span class="n">diffeq2</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">w2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">diffeq2</span><span class="p">,</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">w2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">rhs</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">display</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\ode.py</span> in <span class="ni">dsolve</span><span class="nt">(eq, func, hint, simplify, ics, xi, eta, x0, n, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span>             <span class="c1"># The key &#39;hint&#39; stores the hint needed to be solved for.</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span>             <span class="n">hint</span> <span class="o">=</span> <span class="n">hints</span><span class="p">[</span><span class="s1">&#39;hint&#39;</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">640</span>             <span class="k">return</span> <span class="n">_helper_simplify</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">hint</span><span class="p">,</span> <span class="n">hints</span><span class="p">,</span> <span class="n">simplify</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="n">ics</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span> 
+<span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="k">def</span> <span class="nf">_helper_simplify</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">hint</span><span class="p">,</span> <span class="n">match</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\ode.py</span> in <span class="ni">_helper_simplify</span><span class="nt">(eq, hint, match, simplify, ics, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>         <span class="c1"># simplifications</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">solvefunc</span><span class="p">,</span> <span class="n">SingleODESolver</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">669</span>             <span class="n">sols</span> <span class="o">=</span> <span class="n">solvefunc</span><span class="o">.</span><span class="n">get_general_solution</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>             <span class="n">sols</span> <span class="o">=</span> <span class="n">solvefunc</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">match</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\single.py</span> in <span class="ni">get_general_solution</span><span class="nt">(self, simplify)</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span>             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> solver cannot solve:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span>             <span class="k">raise</span> <span class="n">ODEMatchError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hint</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ode_problem</span><span class="o">.</span><span class="n">eq</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">296</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_general_solution</span><span class="p">(</span><span class="n">simplify_flag</span><span class="o">=</span><span class="n">simplify</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span> 
+<span class="g g-Whitespace">    </span><span class="mi">298</span>     <span class="k">def</span> <span class="nf">_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\single.py</span> in <span class="ni">_get_general_solution</span><span class="nt">(self, simplify_flag)</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span> 
+<span class="g g-Whitespace">    </span><span class="mi">919</span>         <span class="k">if</span> <span class="n">sols</span> <span class="o">==</span> <span class="p">[]:</span>
+<span class="ne">--&gt; </span><span class="mi">920</span>             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;The given ODE &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cannot be solved by&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span>                 <span class="o">+</span> <span class="s2">&quot; the factorable group method&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span>         <span class="k">return</span> <span class="n">sols</span>
+
+<span class="ne">NotImplementedError</span>: The given ODE -(2133*pi*(-137*x*Derivative(w2(x), (x, 2)) + 41100*Derivative(w2(x), (x, 2)) + 632002500*Derivative(w2(x), (x, 4))) - 320000000*Derivative(w2(x), (x, 2)) - 48000)/(292221*pi) + Derivative(w2(x), x) cannot be solved by the factorable group method
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="finite-differences">
+<h1>Finite differences<a class="headerlink" href="#finite-differences" title="Permalink to this headline">#</a></h1>
+<p>Differential equation:
+$<span class="math notranslate nohighlight">\(EI \frac{d^{4}}{d x^{4}} w{\left(x \right)} - p \frac{d}{d x} w{\left(x \right)} - \left(Ho - L p + p x\right) \frac{d^{2}}{d x^{2}} w{\left(x \right)} = q\)</span>$</p>
+<p>Boundary conditions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w(0)=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({\left. {d^2w\over dx^2} \right|_{x = 0}} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({\left. {d^2w\over dx^2} \right|_{x = L}} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({\left. {d^3w\over dx^2} \right|_{x = L}} = {H_1 \over EI} {\left. {dw\over dx} \right|_{x = L}} \)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">w_n2nev</span><span class="p">,</span><span class="n">w_n1nev</span><span class="p">,</span><span class="n">w_n</span><span class="p">,</span><span class="n">w_n1pos</span><span class="p">,</span><span class="n">w_n2pos</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w_n-2 w_n-1 w_n w_n+1 w_n+2&#39;</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">EI</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">Ho</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x EI p L Ho q&#39;</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ho</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="n">x</span>
+<span class="n">diffeq</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-</span><span class="n">H</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">q</span><span class="p">)</span>
+<span class="n">diffeq_fdiff</span> <span class="o">=</span> <span class="n">diffeq</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="n">w_n2nev</span> <span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">w_n1nev</span><span class="o">+</span><span class="mi">6</span><span class="o">*</span><span class="n">w_n</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">w_n1pos</span><span class="o">+</span><span class="n">w_n2pos</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">w_n1nev</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">w_n</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="n">w_n1pos</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">w_n1nev</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">w_n1pos</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">diffeq_fdiff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{EI \left(6 w_{n} - 4 w_{n+1} + w_{n+2} - 4 w_{n-1} + w_{n-2}\right)}{h^{4}} - \frac{p \left(0.5 w_{n+1} - 0.5 w_{n-1}\right)}{h} - \frac{\left(Ho - L p + p x\right) \left(- 2 w_{n} + w_{n+1} + w_{n-1}\right)}{h^{2}} = q\]</div>
+</div>
+</div>
+<p>Finite difference coefficients:
+$<span class="math notranslate nohighlight">\({dw\over dx}={-{1 \over 2}w_{i-1}+{1 \over 2}w_{i+1} \over h}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[{d^2w\over dx^2}={w_{i-1}−2w_i+w_{i+1} \over h^2}\]</div>
+<div class="math notranslate nohighlight">
+\[{d^3w\over dx^3}={-{1 \over 2}w_{i-2}+w_{i-1}-w_{i+1}+{1 \over 2} w_{i+2} \over h^3}\]</div>
+<div class="math notranslate nohighlight">
+\[{d^4w\over dx^4}={w_{i-2}−4w_{i-1}+6w_i-4w_{i+1}+w_{i+2} \over h^4}\]</div>
+<p>Finite difference approximation:
+$<span class="math notranslate nohighlight">\(EI {w_{i-2}−4w_{i-1}+6w_i-4w_{i+1}+w_{i+2} \over h^4} - p {-{1 \over 2}w_{i-1}+{1 \over 2}w_{i+1} \over h} - \left(Ho - L p + p x_{i}\right) {w_{i-1}−2w_i+w_{i+1} \over h^2} = q\)</span>$</p>
+<p>Boundary conditions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w_0=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({{w_{-1}−2w_0+w_1} \over h^2} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({w_{n-1}−2w_n+w_{n+1} \over h^2} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({-{1 \over 2}w_{n-2}+w_{n-1}-w_{n+1}+{1 \over 2} w_{n+2} \over h^3} = {H_1(x_n) \over EI} {-{1 \over 2}w_{n-1}+{1 \over 2}w_{n+1} \over h} \)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">3.6</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">45</span><span class="o">/</span><span class="mi">1000</span>
+<span class="n">Area</span> <span class="o">=</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Volume</span> <span class="o">=</span> <span class="n">Area</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">7850</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Area</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Volume</span>
+<span class="n">EI</span> <span class="o">=</span> <span class="mf">2e11</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1800</span>
+<span class="n">Ho</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">1000000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ho</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="n">x</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span>
+
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">H</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">EI</span><span class="o">*-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">h</span>
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">-</span><span class="n">H</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">EI</span><span class="o">*+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">h</span>
+<span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">EI</span><span class="o">*+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">EI</span><span class="o">*-</span><span class="mi">4</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span>  <span class="p">]</span> <span class="o">+=</span> <span class="n">EI</span><span class="o">*+</span><span class="mi">6</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">EI</span><span class="o">*-</span><span class="mi">4</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">EI</span><span class="o">*+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="o">-</span><span class="n">p</span><span class="o">*-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="o">-</span><span class="n">p</span><span class="o">*+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="o">-</span><span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">*-</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span>  <span class="p">]</span> <span class="o">+=</span> <span class="o">-</span><span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">*-</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="o">-</span><span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">*-</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">#not correct yet</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Example_riser_model_9_0.png" src="../_images/Example_riser_model_9_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy_ingegrate</span> <span class="kn">import</span> <span class="n">solve_bvp</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">3.6</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">45</span><span class="o">/</span><span class="mi">1000</span>
+<span class="n">Area</span> <span class="o">=</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Volume</span> <span class="o">=</span> <span class="n">Area</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">7850</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Area</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Volume</span>
+<span class="n">EI</span> <span class="o">=</span> <span class="mf">2e11</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1800</span>
+<span class="n">Ho</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">1000000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">w1</span> <span class="o">=</span> <span class="n">w</span><span class="s1">&#39;</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">w1</span><span class="s1">&#39;</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">w2</span><span class="s1">&#39;</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">w</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="mi">1</span><span class="o">/</span><span class="n">EI</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">bvp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">w3</span><span class="p">,</span> <span class="n">w4</span> <span class="o">=</span> <span class="n">W</span>
+    <span class="n">dw1dx</span> <span class="o">=</span> <span class="n">w2</span>
+    <span class="n">dw2dx</span> <span class="o">=</span> <span class="n">w3</span>
+    <span class="n">dw3dx</span> <span class="o">=</span> <span class="n">w4</span>
+    <span class="n">dw4dx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">EI</span> <span class="o">*</span> <span class="p">(</span><span class="n">q</span> <span class="o">+</span> <span class="n">p</span> <span class="o">*</span> <span class="n">w2</span> <span class="n">_</span> <span class="p">(</span><span class="n">Ho</span> <span class="n">_L</span><span class="o">*</span><span class="n">p</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">w3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dw1dx</span><span class="p">,</span><span class="n">dw2dx</span><span class="p">,</span><span class="n">dw3dx</span><span class="p">,</span><span class="n">dw4dx</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">bc</span><span class="p">(</span><span class="n">Wa</span><span class="p">,</span> <span class="n">Wb</span><span class="p">,</span> <span class="n">Wc</span><span class="p">,</span> <span class="n">Wd</span><span class="p">):</span>
+    <span class="n">w1a</span><span class="p">,</span> <span class="n">w2a</span><span class="p">,</span> <span class="n">w3a</span><span class="p">,</span> <span class="n">w4a</span> <span class="o">=</span> <span class="n">Wa</span>
+    <span class="n">w1b</span><span class="p">,</span> <span class="n">w2b</span><span class="p">,</span> <span class="n">w3b</span><span class="p">,</span> <span class="n">w4b</span> <span class="o">=</span> <span class="n">Wb</span>
+    <span class="n">w1c</span><span class="p">,</span> <span class="n">w2c</span><span class="p">,</span> <span class="n">w3c</span><span class="p">,</span> <span class="n">w4c</span> <span class="o">=</span> <span class="n">Wc</span>
+    <span class="n">w1d</span><span class="p">,</span> <span class="n">w2d</span><span class="p">,</span> <span class="n">w3d</span><span class="p">,</span> <span class="n">w4d</span> <span class="o">=</span> <span class="n">Wd</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">w1a</span><span class="p">,</span> <span class="c1"># equivalent to w1(0)=0</span>
+            <span class="n">w3b</span><span class="p">,</span> <span class="c1"># equivalent to w3(0)=0</span>
+            <span class="n">w3c</span><span class="p">,</span> <span class="c1"># equivalent to w3(L)=0</span>
+            <span class="n">w4d</span> <span class="o">-</span> <span class="n">H</span><span class="o">/</span><span class="n">EI</span><span class="o">*</span> <span class="n">w1d</span><span class="p">]</span> <span class="c1">#equivalent to w4(L) = H/EI * w1(L)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\tomvanwoudenbe\AppData\Local\Temp\ipykernel_10120\518399898.py&quot;</span><span class="gt">, line </span><span class="mi">17</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">w</span><span class="s1">&#39;</span>
+           <span class="o">^</span>
+<span class="ne">SyntaxError</span>: EOL while scanning string literal
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="write-as-system-of-odes">
+<h1>Write as system of ODEs<a class="headerlink" href="#write-as-system-of-odes" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">w3</span><span class="p">,</span> <span class="n">w4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w1 w2 w3 w4&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mf">3.6</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mi">45</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Area</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Volume</span> <span class="o">=</span> <span class="n">Area</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">7850</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Area</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">Volume</span>
+<span class="n">EI</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="mf">2e11</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1800</span>
+<span class="n">Ho</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">1000000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">H2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ho</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">+</span><span class="n">p</span><span class="c1">#*x</span>
+<span class="n">display</span><span class="p">(</span><span class="n">H2</span><span class="p">)</span>
+<span class="n">diffeq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">diffeq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">diffeq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">diffeq4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w4</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">1</span><span class="o">/</span><span class="n">EI</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">H2</span><span class="o">*</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">,</span><span class="n">diffeq2</span><span class="p">,</span><span class="n">diffeq3</span><span class="p">,</span><span class="n">diffeq4</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">([</span><span class="n">diffeq1</span><span class="p">,</span><span class="n">diffeq2</span><span class="p">,</span><span class="n">diffeq3</span><span class="p">,</span><span class="n">diffeq4</span><span class="p">],[</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w4</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 12000000 - \frac{262122237 \pi}{80}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{d}{d x} \operatorname{w_{1}}{\left(x \right)} = \operatorname{w_{2}}{\left(x \right)}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{d}{d x} \operatorname{w_{2}}{\left(x \right)} = \operatorname{w_{3}}{\left(x \right)}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{d}{d x} \operatorname{w_{3}}{\left(x \right)} = \operatorname{w_{4}}{\left(x \right)}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{d}{d x} \operatorname{w_{4}}{\left(x \right)} = \frac{4 \cdot \left(\frac{876663 \pi \operatorname{w_{2}}{\left(x \right)}}{80} + \left(12000000 - \frac{262122237 \pi}{80}\right) \operatorname{w_{3}}{\left(x \right)} + 1800\right)}{202209199875 \pi}\]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_21856</span>\<span class="mf">483021684.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">display</span><span class="p">(</span><span class="n">diffeq1</span><span class="p">,</span><span class="n">diffeq2</span><span class="p">,</span><span class="n">diffeq3</span><span class="p">,</span><span class="n">diffeq4</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">([</span><span class="n">diffeq1</span><span class="p">,</span><span class="n">diffeq2</span><span class="p">,</span><span class="n">diffeq3</span><span class="p">,</span><span class="n">diffeq4</span><span class="p">],[</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">w4</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">display</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\ode.py</span> in <span class="ni">dsolve</span><span class="nt">(eq, func, hint, simplify, ics, xi, eta, x0, n, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>         <span class="c1"># been solved.</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">559</span>             <span class="n">sol</span> <span class="o">=</span> <span class="n">dsolve_system</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">funcs</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="n">ics</span><span class="p">,</span> <span class="n">doit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span>             <span class="k">return</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">sol</span>
+<span class="g g-Whitespace">    </span><span class="mi">561</span>         <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\systems.py</span> in <span class="ni">dsolve_system</span><span class="nt">(eqs, funcs, t, ics, doit, simplify)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2109</span>     <span class="k">for</span> <span class="n">canon_eq</span> <span class="ow">in</span> <span class="n">canon_eqs</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2110</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2111</span>             <span class="n">sol</span> <span class="o">=</span> <span class="n">_strong_component_solver</span><span class="p">(</span><span class="n">canon_eq</span><span class="p">,</span> <span class="n">funcs</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2112</span>         <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2113</span>             <span class="n">sol</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\systems.py</span> in <span class="ni">_strong_component_solver</span><span class="nt">(eqs, funcs, t)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1717</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1718</span>         <span class="k">elif</span> <span class="n">match</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_linear&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1719</span>             <span class="n">sol</span> <span class="o">=</span> <span class="n">_linear_ode_solver</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1720</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1721</span>         <span class="c1"># Note: For now, only linear systems are handled by this function</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\systems.py</span> in <span class="ni">_linear_ode_solver</span><span class="nt">(match)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1612</span>     <span class="nb">type</span> <span class="o">=</span> <span class="n">match</span><span class="p">[</span><span class="s1">&#39;type_of_equation&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1613</span> 
+<span class="ne">-&gt; </span><span class="mi">1614</span>     <span class="n">sol_vector</span> <span class="o">=</span> <span class="n">linodesolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">rhs</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="n">B</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1615</span>                              <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1616</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\systems.py</span> in <span class="ni">linodesolve</span><span class="nt">(A, t, b, B, type, doit, tau)</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span> 
+<span class="g g-Whitespace">    </span><span class="mi">976</span>     <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;type1&quot;</span><span class="p">,</span> <span class="s2">&quot;type2&quot;</span><span class="p">,</span> <span class="s2">&quot;type5&quot;</span><span class="p">,</span> <span class="s2">&quot;type6&quot;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">977</span>         <span class="n">P</span><span class="p">,</span> <span class="n">J</span> <span class="o">=</span> <span class="n">matrix_exp_jordan_form</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>         <span class="n">P</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\systems.py</span> in <span class="ni">matrix_exp_jordan_form</span><span class="nt">(A, t)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="k">return</span> <span class="n">chains</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span> 
+<span class="ne">--&gt; </span><span class="mi">650</span>     <span class="n">eigenchains</span> <span class="o">=</span> <span class="n">jordan_chains</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span> 
+<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="c1"># Needed for consistency across Python versions</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\solvers\ode\systems.py</span> in <span class="ni">jordan_chains</span><span class="nt">(A)</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span>         <span class="n">where</span> <span class="n">vijk</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">kth</span> <span class="n">vector</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">jth</span> <span class="n">chain</span> <span class="k">for</span> <span class="n">eigenvalue</span> <span class="n">i</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">636</span>         <span class="s1">&#39;&#39;&#39;</span>
+<span class="ne">--&gt; </span><span class="mi">637</span><span class="s1">         P, blocks = A.jordan_cells()</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span><span class="s1">         basis = [P[:,i] for i in range(P.shape[1])]</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span><span class="s1">         n = 0</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\matrices.py</span> in <span class="ni">jordan_cells</span><span class="nt">(self, calc_transformation)</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span><span class="s1">     def jordan_cells(self, calc_transformation=True):</span>
+<span class="ne">--&gt; </span><span class="mi">734</span><span class="s1">         P, J = self.jordan_form()</span>
+<span class="g g-Whitespace">    </span><span class="mi">735</span><span class="s1">         return P, J.get_diag_blocks()</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\matrices.py</span> in <span class="ni">jordan_form</span><span class="nt">(self, calc_transform, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span><span class="s1">     def jordan_form(self, calc_transform=True, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">419</span><span class="s1">         return _jordan_form(self, calc_transform=calc_transform, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span><span class="s1">     def left_eigenvects(self, **flags):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\eigen.py</span> in <span class="ni">_jordan_form</span><span class="nt">(M, calc_transform, chop)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span><span class="s1">             return restore_floats(jordan_mat)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">1216</span><span class="s1">         jordan_basis = [eig_mat(eig, 1).nullspace()[0]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1217</span><span class="s1">                 for eig in blocks]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span><span class="s1">         basis_mat    = mat.hstack(*jordan_basis)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\eigen.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span><span class="s1">             return restore_floats(jordan_mat)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">1216</span><span class="s1">         jordan_basis = [eig_mat(eig, 1).nullspace()[0]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1217</span><span class="s1">                 for eig in blocks]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span><span class="s1">         basis_mat    = mat.hstack(*jordan_basis)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\matrices.py</span> in <span class="ni">nullspace</span><span class="nt">(self, simplify, iszerofunc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span><span class="s1">     def nullspace(self, simplify=False, iszerofunc=_iszero):</span>
+<span class="ne">--&gt; </span><span class="mi">354</span><span class="s1">         return _nullspace(self, simplify=simplify, iszerofunc=iszerofunc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span><span class="s1">     def rowspace(self, simplify=False):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\subspaces.py</span> in <span class="ni">_nullspace</span><span class="nt">(M, simplify, iszerofunc)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s1">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s1"> </span>
+<span class="ne">---&gt; </span><span class="mi">64</span><span class="s1">     reduced, pivots = M.rref(iszerofunc=iszerofunc, simplify=simplify)</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s1"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span><span class="s1">     free_vars = [i for i in range(M.cols) if i not in pivots]</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\matrices.py</span> in <span class="ni">rref</span><span class="nt">(self, iszerofunc, simplify, pivots, normalize_last)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="s1">     def rref(self, iszerofunc=_iszero, simplify=False, pivots=True,</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span><span class="s1">             normalize_last=True):</span>
+<span class="ne">--&gt; </span><span class="mi">175</span><span class="s1">         return _rref(self, iszerofunc=iszerofunc, simplify=simplify,</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="s1">             pivots=pivots, normalize_last=normalize_last)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\reductions.py</span> in <span class="ni">_rref</span><span class="nt">(M, iszerofunc, simplify, pivots, normalize_last)</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span><span class="s1">     simpfunc = simplify if isinstance(simplify, FunctionType) else _simplify</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="s1"> </span>
+<span class="ne">--&gt; </span><span class="mi">305</span><span class="s1">     mat, pivot_cols, _ = _row_reduce(M, iszerofunc, simpfunc,</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="s1">             normalize_last, normalize=True, zero_above=True)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\reductions.py</span> in <span class="ni">_row_reduce</span><span class="nt">(M, iszerofunc, simpfunc, normalize_last, normalize, zero_above)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span><span class="s1">                 normalize=True, zero_above=True):</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span><span class="s1"> </span>
+<span class="ne">--&gt; </span><span class="mi">127</span><span class="s1">     mat, pivot_cols, swaps = _row_reduce_list(list(M), M.rows, M.cols, M.one,</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span><span class="s1">             iszerofunc, simpfunc, normalize_last=normalize_last,</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span><span class="s1">             normalize=normalize, zero_above=zero_above)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\reductions.py</span> in <span class="ni">_row_reduce_list</span><span class="nt">(mat, rows, cols, one, iszerofunc, simpfunc, normalize_last, normalize, zero_above)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="s1">                 continue</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span><span class="s1"> </span>
+<span class="ne">--&gt; </span><span class="mi">109</span><span class="s1">             cross_cancel(pivot_val, row, val, piv_row)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="s1">         piv_row += 1</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\matrices\reductions.py</span> in <span class="ni">cross_cancel</span><span class="nt">(a, i, b, j)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span><span class="s1">         q = (j - i)*cols</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="s1">         for p in range(i*cols, (i + 1)*cols):</span>
+<span class="ne">---&gt; </span><span class="mi">58</span><span class="s1">             mat[p] = isimp(a*mat[p] - b*mat[p + q])</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s1"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s1">     isimp = _get_intermediate_simp(_dotprodsimp)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\simplify.py</span> in <span class="ni">dotprodsimp</span><span class="nt">(expr, withsimp)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2112</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2113</span><span class="s1">                 if expr2 is expr or count_ops_alg(expr2)[0] &gt;= 6: # check again after substitution</span>
+<span class="ne">-&gt; </span><span class="mi">2114</span><span class="s1">                     expr3 = cancel(expr2)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2115</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2116</span><span class="s1">                     if expr3 != expr2:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\polytools.py</span> in <span class="ni">cancel</span><span class="nt">(f, _signsimp, *gens, **args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6799</span><span class="s1">             return f.xreplace(dict(reps))</span>
+<span class="g g-Whitespace">   </span><span class="mi">6800</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">6801</span><span class="s1">     c, (P, Q) = 1, F.cancel(G)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6802</span><span class="s1">     if opt.get(&#39;polys&#39;, False) and &#39;gens&#39; not in opt:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6803</span><span class="s1">         opt[&#39;gens&#39;] = R.symbols</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">cancel</span><span class="nt">(self, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2221</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2222</span><span class="s1">         if not (domain.is_Field and domain.has_assoc_Ring):</span>
+<span class="ne">-&gt; </span><span class="mi">2223</span><span class="s1">             _, p, q = f.cofactors(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2224</span><span class="s1">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2225</span><span class="s1">             new_ring = ring.clone(domain=domain.get_ring())</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">cofactors</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2138</span><span class="s1">         J, (f, g) = f.deflate(g)</span>
+<span class="ne">-&gt; </span><span class="mi">2139</span><span class="s1">         h, cff, cfg = f._gcd(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2141</span><span class="s1">         return (h.inflate(J), cff.inflate(J), cfg.inflate(J))</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">_gcd</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2172</span><span class="s1">             return f._gcd_ZZ(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2173</span><span class="s1">         else: # TODO: don&#39;t use dense representation (port PRS algorithms)</span>
+<span class="ne">-&gt; </span><span class="mi">2174</span><span class="s1">             return ring.dmp_inner_gcd(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2175</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2176</span><span class="s1">     def _gcd_ZZ(f, g):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\compatibility.py</span> in <span class="ni">dmp_inner_gcd</span><span class="nt">(self, f, g)</span>
+<span class="g g-Whitespace">    </span><span class="mi">661</span><span class="s1">         return (self.from_dense(H), self.from_dense(F), self.from_dense(G))</span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span><span class="s1">     def dmp_inner_gcd(self, f, g):</span>
+<span class="ne">--&gt; </span><span class="mi">663</span><span class="s1">         H, F, G = dmp_inner_gcd(self.to_dense(f), self.to_dense(g), self.ngens-1, self.domain)</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span><span class="s1">         return (self.from_dense(H), self.from_dense(F), self.from_dense(G))</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span><span class="s1">     def dup_gcd(self, f, g):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_inner_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1581</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1582</span><span class="s1">     J, (f, g) = dmp_multi_deflate((f, g), u, K)</span>
+<span class="ne">-&gt; </span><span class="mi">1583</span><span class="s1">     h, cff, cfg = _dmp_inner_gcd(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1584</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1585</span><span class="s1">     return (dmp_inflate(h, J, u, K),</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">_dmp_inner_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1554</span><span class="s1">                 pass</span>
+<span class="g g-Whitespace">   </span><span class="mi">1555</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">1556</span><span class="s1">         return dmp_rr_prs_gcd(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1557</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1558</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_rr_prs_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1057</span><span class="s1">         return dup_rr_prs_gcd(f, g, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1058</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">1059</span><span class="s1">     result = _dmp_rr_trivial_gcd(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1060</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1061</span><span class="s1">     if result is not None:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">_dmp_rr_trivial_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="s1">         return dmp_one(u, K), f, g</span>
+<span class="g g-Whitespace">    </span><span class="mi">910</span><span class="s1">     elif query(&#39;USE_SIMPLIFY_GCD&#39;):</span>
+<span class="ne">--&gt; </span><span class="mi">911</span><span class="s1">         return _dmp_simplify_gcd(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span><span class="s1">     else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span><span class="s1">         return None</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">_dmp_simplify_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">951</span><span class="s1">             G = dmp_content(g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">952</span><span class="s1">         else:</span>
+<span class="ne">--&gt; </span><span class="mi">953</span><span class="s1">             F = dmp_content(f, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">954</span><span class="s1">             G = dmp_LC(g, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">955</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_content</span><span class="nt">(f, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1790</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1791</span><span class="s1">     for c in f[1:]:</span>
+<span class="ne">-&gt; </span><span class="mi">1792</span><span class="s1">         cont = dmp_gcd(cont, c, v, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1793</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1794</span><span class="s1">         if dmp_one_p(cont, v, K):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1622</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1623</span><span class="s1">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1624</span><span class="s1">     return dmp_inner_gcd(f, g, u, K)[0]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1625</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1626</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_inner_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1581</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1582</span><span class="s1">     J, (f, g) = dmp_multi_deflate((f, g), u, K)</span>
+<span class="ne">-&gt; </span><span class="mi">1583</span><span class="s1">     h, cff, cfg = _dmp_inner_gcd(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1584</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1585</span><span class="s1">     return (dmp_inflate(h, J, u, K),</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">_dmp_inner_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1554</span><span class="s1">                 pass</span>
+<span class="g g-Whitespace">   </span><span class="mi">1555</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">1556</span><span class="s1">         return dmp_rr_prs_gcd(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1557</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1558</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_rr_prs_gcd</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span><span class="s1">     gc, G = dmp_primitive(g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span><span class="s1"> </span>
+<span class="ne">-&gt; </span><span class="mi">1067</span><span class="s1">     h = dmp_subresultants(F, G, u, K)[-1]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span><span class="s1">     c, _, _ = dmp_rr_prs_gcd(fc, gc, u - 1, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_subresultants</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span><span class="s1">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">550</span><span class="s1">     return dmp_inner_subresultants(f, g, u, K)[0]</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dmp_inner_subresultants</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span><span class="s1">                     dmp_pow(c, d, v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span><span class="s1"> </span>
+<span class="ne">--&gt; </span><span class="mi">513</span><span class="s1">         h = dmp_prem(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span><span class="s1">         h = [ dmp_quo(ch, b, v, K) for ch in h ]</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_prem</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1236</span><span class="s1"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1237</span><span class="s1">         R = dmp_mul_term(r, lc_g, 0, u, K)</span>
+<span class="ne">-&gt; </span><span class="mi">1238</span><span class="s1">         G = dmp_mul_term(g, lc_r, j, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1239</span><span class="s1">         r = dmp_sub(R, G, u, K)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul_term</span><span class="nt">(f, c, i, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="s1">         return dmp_zero(u)</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="s1">     else:</span>
+<span class="nn">--&gt; 184         return [ dmp_mul(cf, c, v, K) for cf</span> in <span class="ni">f ] + dmp_zeros</span><span class="nt">(i, v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="s1">         return dmp_zero(u)</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="s1">     else:</span>
+<span class="nn">--&gt; 184         return [ dmp_mul(cf, c, v, K) for cf</span> in <span class="ni">f ] + dmp_zeros</span><span class="nt">(i, v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span><span class="s1">         for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span><span class="s1">             coeff = dmp_add(coeff, dmp_mul(f[j], g[i - j], v, K), v, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span><span class="s1">         h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dmp_mul</span><span class="nt">(f, g, u, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">805</span><span class="s1">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">806</span><span class="s1">     if not u:</span>
+<span class="ne">--&gt; </span><span class="mi">807</span><span class="s1">         return dup_mul(f, g, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span><span class="s1">     if f == g:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dup_mul</span><span class="nt">(f, g, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">783</span><span class="s1">         lo, hi = dup_mul(fl, gl, K), dup_mul(fh, gh, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span><span class="s1"> </span>
+<span class="ne">--&gt; </span><span class="mi">785</span><span class="s1">         mid = dup_mul(dup_add(fl, fh, K), dup_add(gl, gh, K), K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span><span class="s1">         mid = dup_sub(mid, dup_add(lo, hi, K), K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span><span class="s1"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dup_mul</span><span class="nt">(f, g, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="s1">             for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">767</span><span class="s1">                 coeff += f[j]*g[i - j]</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s1">             h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\domains\gaussiandomains.py</span> in <span class="ni">__add__</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="s1"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="s1">     def __add__(self, other):</span>
+<span class="ne">---&gt; </span><span class="mi">73</span><span class="s1">         x, y = self._get_xy(other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s1">         if x is not None:</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="s1">             return self.new(self.x + x, self.y + y)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\domains\gaussiandomains.py</span> in <span class="ni">_get_xy</span><span class="nt">(cls, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="s1">             except CoercionFailed:</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span><span class="s1">                 return None, None</span>
+<span class="ne">---&gt; </span><span class="mi">70</span><span class="s1">         return other.x, other.y</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="s1"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="s1">     def __add__(self, other):</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Examples_slender_structures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Constrained_bending_with_tension.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Constrained bending with tension</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Example_wheel_on_cable_dirac.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example wheel on cable dirac</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom van Woudenberg<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

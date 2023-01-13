@@ -1,0 +1,16 @@
+title: SymPy instructions and examples 
+author: Tom van Woudenberg
+logo: logo.svg
+
+execute:
+  execute_notebooks: force
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+bibtex_bibfiles:
+  - references.bib
+
+repository:
+  url: https://gitlab.tudelft.nl/tomvanwoudenbe/sympy-instructions-and-examples

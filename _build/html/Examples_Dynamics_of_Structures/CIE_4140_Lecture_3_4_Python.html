@@ -1,0 +1,1689 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CIE_4140_Lecture_3_4_Python &#8212; SymPy instructions and examples</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CIE4140_Lecture_13_Part_1_Python" href="CIE4140_Lecture_13_Part_1_Python.html" />
+    <link rel="prev" title="CIE_4140_Lecture_3_3_Python" href="CIE_4140_Lecture_3_3_Python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SymPy instructions and examples</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to this SymPy example and instruction book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Instruction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Instruction/Het_gebruik_van_Python_bij_ConstructieMechanica.html">
+   Het gebruik van Python bij Constructiemechanica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Instruction/SymPy_example_for_Structural_Mechanics_problems.html">
+   SymPy example for Structural Mechanics problems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Constructiemechanics 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html">
+   Basisgeval college statisch onbepaald met Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht.html">
+   Introductie SymPy voor Matrixframe opdracht
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode.html">
+   Introductie verplaatsingenmethode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_1.html">
+   Sympy voorbeeld 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_2.html">
+   Sympy voorbeeld 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_3.html">
+   Sympy voorbeeld 3
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Structural Mechanics 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Lecture-example-ODE.html">
+   Lecture example ODE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Vergelijking_methodes.html">
+   Vergelijking oplosmethodes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_1_work_and_energy.html">
+   Exercise 1 work and energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_6_Work_and_Energy.html">
+   Exercise 6 Work and Energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Taylor_approximation.html">
+   Taylor approximation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generic examples Structural Mechanics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger.html">
+   DV-SB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger-F.html">
+   DV-SB-ligger-F
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger.html">
+   DV-SOB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer.html">
+   DV-SOB-ligger-met-veer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/Vakwerk_SB.html">
+   Vakwerk_SB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/VGM-q-last.html">
+   VGM-q-last
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Base Structural Engineering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Exact_length_parabolic_cable.html">
+   Parabolic cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Example_Extension_week_1_strain_energy.html">
+   Example Extension week 1 strain energy#
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable.html">
+   Lecture 4 exercise 1 cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Taylor_series.html">
+   Taylor series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Wrinkler_element_definition.html">
+   Wrinkler element definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Variation_of_load_cable.html">
+   Variation of load cable
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Slender Structures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Assignment_bending_shear_beam_B.html">
+   Assignment bending shear beam B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Beam_with_varying_EI_and_q.html">
+   Beam with varying EI and q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Constrained_bending_with_tension.html">
+   Constrained bending with tension
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Example_riser_model.html">
+   Exampel riser model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Example_wheel_on_cable_dirac.html">
+   Example wheel on cable dirac
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Foundation_pile.html">
+   Foundation pile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Park_bridge_2018.html">
+   Park bridge 2018
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Timoshenko_Beam.html">
+   Timoshenko beam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Timoshenko_Beam_element_definition.html">
+   Timoshenko Beam element definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamics of Structures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE_4140_Lecture_2_1_Python.html">
+   CIE_4140_Lecture_2_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE_4140_Lecture_2_2_Python.html">
+   CIE_4140_Lecture_2_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE_4140_Lecture_3_1_Python.html">
+   CIE_4140_Lecture_3_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE_4140_Lecture_3_2_Python.html">
+   CIE_4140_Lecture_3_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE_4140_Lecture_3_3_Python.html">
+   CIE_4140_Lecture_3_3_Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   CIE_4140_Lecture_3_4_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE4140_Lecture_13_Part_1_Python.html">
+   CIE4140_Lecture_13_Part_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE4140_Lecture_13_Part_1_Python_seperate_q.html">
+   CIE4140_Lecture_13_Part_1_Python_seperate_q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE4140_Lecture_13_Part_2_Python.html">
+   CIE4140_Lecture_13_Part_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CIE_4140_Lecture_18_Part_1_Python.html">
+   CIE_4140_Lecture_18_Part_1_Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Other_examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Other_examples/Singularity_function_with_hinged_beam.html">
+   Singularity functions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integral-fourier-transform-and-frequency-domain-analysis">
+   Integral Fourier Transform and frequency-domain analysis
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CIE_4140_Lecture_3_4_Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integral-fourier-transform-and-frequency-domain-analysis">
+   Integral Fourier Transform and frequency-domain analysis
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="cie-4140-lecture-3-4-python">
+<h1>CIE_4140_Lecture_3_4_Python<a class="headerlink" href="#cie-4140-lecture-3-4-python" title="Permalink to this headline">#</a></h1>
+<section id="integral-fourier-transform-and-frequency-domain-analysis">
+<h2>Integral Fourier Transform and frequency-domain analysis<a class="headerlink" href="#integral-fourier-transform-and-frequency-domain-analysis" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;tau&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">positive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Example Function of Time</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">tau</span><span class="p">)</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">tau</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CIE_4140_Lecture_3_4_Python_6_0.png" src="../_images/CIE_4140_Lecture_3_4_Python_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;omega&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">f_omega</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">),</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">oo</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">oo</span><span class="p">))</span>
+<span class="n">f_phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span> 
+<span class="n">f_omega</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">f_omega</span><span class="p">)</span>
+<span class="n">f_phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">f_phi</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">f_omega</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">f_phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{i \left(1 - e^{i \omega \tau}\right) e^{- 2 i \omega \tau}}{\omega}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{i \left(1 - e^{2 i \pi \phi \tau}\right) e^{- 4 i \pi \phi \tau}}{2 \pi \phi}\]</div>
+</div>
+</div>
+<p>Another definition for the fourier transformation is used by sympy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p0</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">f_omega</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">)])),(</span><span class="n">omega</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Real part&#39;</span> <span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">adaptive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">nb_of_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">im</span><span class="p">(</span><span class="n">f_omega</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">)])),(</span><span class="n">omega</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Imaginary part&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">adaptive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">nb_of_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">f_phi</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">)])),(</span><span class="n">phi</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">10</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Real part&#39;</span> <span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">adaptive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">nb_of_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">im</span><span class="p">(</span><span class="n">f_phi</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">)])),(</span><span class="n">phi</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">10</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Imaginary part&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">adaptive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">nb_of_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CIE_4140_Lecture_3_4_Python_9_0.png" src="../_images/CIE_4140_Lecture_3_4_Python_9_0.png" />
+<img alt="../_images/CIE_4140_Lecture_3_4_Python_9_1.png" src="../_images/CIE_4140_Lecture_3_4_Python_9_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="bp">cls</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;m, c, k&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Equation_of_Motion</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">c</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">f</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Equation_of_Motion</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle c \frac{d}{d t} x{\left(t \right)} + k x{\left(t \right)} + m \frac{d^{2}}{d t^{2}} x{\left(t \right)} + \theta\left(t - 2 \tau\right) - \theta\left(t - \tau\right)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">Equation_of_Motion</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_13648</span>\<span class="mf">1221906460.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">Equation_of_Motion</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">fourier_transform</span><span class="nt">(f, x, k, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2256</span>     <span class="n">mellin_transform</span><span class="p">,</span> <span class="n">laplace_transform</span>
+<span class="g g-Whitespace">   </span><span class="mi">2257</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">2258</span><span class="sd">     return FourierTransform(f, x, k).doit(**hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2259</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2260</span><span class="sd"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span><span class="sd">         if fn.is_Add:</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span><span class="sd">             hints[&#39;needeval&#39;] = needeval</span>
+<span class="ne">--&gt; </span><span class="mi">181</span><span class="sd">             res = [self.__class__(*([x] + list(self.args[1:]))).doit(**hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="sd">                    for x in fn.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="sd">             extra = []</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span><span class="sd">         if fn.is_Add:</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span><span class="sd">             hints[&#39;needeval&#39;] = needeval</span>
+<span class="ne">--&gt; </span><span class="mi">181</span><span class="sd">             res = [self.__class__(*([x] + list(self.args[1:]))).doit(**hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="sd">                    for x in fn.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="sd">             extra = []</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="sd">         hints[&#39;simplify&#39;] = simplify</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="sd"> </span>
+<span class="ne">--&gt; </span><span class="mi">174</span><span class="sd">         fn, T = self._try_directly(**hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="sd">         if T is not None:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_try_directly</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span><span class="sd">         if try_directly:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">138</span><span class="sd">                 T = self._compute_transform(self.function,</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd">                     self.function_variable, self.transform_variable, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="sd">             except IntegralTransformError:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_compute_transform</span><span class="nt">(self, f, x, k, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2188</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2189</span><span class="sd">     def _compute_transform(self, f, x, k, **hints):</span>
+<span class="ne">-&gt; </span><span class="mi">2190</span><span class="sd">         return _fourier_transform(f, x, k,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2191</span><span class="sd">                                   self.a(), self.b(),</span>
+<span class="g g-Whitespace">   </span><span class="mi">2192</span><span class="sd">                                   self.__class__._name, **hints)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">wrapper</span><span class="nt">(noconds, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span><span class="sd">         @wraps(func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span><span class="sd">         def wrapper(*args, noconds=default, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">256</span><span class="sd">             res = func(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="sd">             if noconds:</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span><span class="sd">                 return res[0]</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_fourier_transform</span><span class="nt">(f, x, k, a, b, name, simplify)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2162</span><span class="sd">         return _simplify(F, simplify), S.true</span>
+<span class="g g-Whitespace">   </span><span class="mi">2163</span><span class="sd"> </span>
+<span class="ne">-&gt; </span><span class="mi">2164</span><span class="sd">     integral_f = integrate(f, (x, S.NegativeInfinity, S.Infinity))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2165</span><span class="sd">     if integral_f in (S.NegativeInfinity, S.Infinity, S.NaN) or integral_f.has(Integral):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2166</span><span class="sd">         raise IntegralTransformError(name, f, &#39;function not integrable on real axis&#39;)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span><span class="sd">     if isinstance(integral, Integral):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span><span class="sd">         return integral.doit(**doit_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span><span class="sd">     else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span><span class="sd">         new_args = [a.doit(**doit_flags) if isinstance(a, Integral) else a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span><span class="sd">                         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">711</span><span class="sd">                             evalued = Add(*others)._eval_interval(x, a, b)</span>
+<span class="ne">--&gt; </span><span class="mi">712</span><span class="sd">                             evalued_pw = piecewise_fold(Add(*piecewises))._eval_interval(x, a, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span><span class="sd">                             function = uneval + evalued + evalued_pw</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span><span class="sd">                         except NotImplementedError:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\functions\elementary\piecewise.py</span> in <span class="ni">_eval_interval</span><span class="nt">(self, sym, a, b, _first)</span>
+<span class="g g-Whitespace">    </span><span class="mi">647</span><span class="sd">                 # TODO simplify hi &lt;= upto</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span><span class="sd">                 return Piecewise((sum, hi &lt;= upto), (Undefined, True))</span>
+<span class="ne">--&gt; </span><span class="mi">649</span><span class="sd">             sum += abei[i][-2]._eval_interval(x, a, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span><span class="sd">             upto = b</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span><span class="sd">         return sum</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">_eval_interval</span><span class="nt">(self, x, a, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">942</span><span class="sd">             return S.Zero</span>
+<span class="g g-Whitespace">    </span><span class="mi">943</span><span class="sd"> </span>
+<span class="ne">--&gt; </span><span class="mi">944</span><span class="sd">         A = _eval_endpoint(left=True)</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span><span class="sd">         if A is S.NaN:</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span><span class="sd">             return A</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">_eval_endpoint</span><span class="nt">(left)</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span><span class="sd">                          S.ComplexInfinity, AccumBounds):</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span><span class="sd">                     if (a &lt; b) != False:</span>
+<span class="ne">--&gt; </span><span class="mi">933</span><span class="sd">                         C = limit(self, x, c, &quot;+&quot; if left else &quot;-&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span><span class="sd">                     else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span><span class="sd">                         C = limit(self, x, c, &quot;-&quot; if left else &quot;+&quot;)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\series\limits.py</span> in <span class="ni">limit</span><span class="nt">(e, z, z0, dir)</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span> 
+<span class="ne">---&gt; </span><span class="mi">67</span>     <span class="k">return</span> <span class="n">Limit</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="nb">dir</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> 
+<span class="g g-Whitespace">     </span><span class="mi">69</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\series\limits.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>             <span class="n">newe</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span> <span class="o">+</span> <span class="n">z0</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">306</span>             <span class="n">coeff</span><span class="p">,</span> <span class="n">ex</span> <span class="o">=</span> <span class="n">newe</span><span class="o">.</span><span class="n">leadterm</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">NotImplementedError</span><span class="p">,</span> <span class="n">PoleError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>             <span class="c1"># The NotImplementedError catching is for custom functions</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">leadterm</span><span class="nt">(self, x, logx, cdir)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3478</span>         <span class="kn">from</span> <span class="nn">.symbol</span> <span class="kn">import</span> <span class="n">Dummy</span>
+<span class="g g-Whitespace">   </span><span class="mi">3479</span>         <span class="kn">from</span> <span class="nn">sympy.functions.elementary.exponential</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="ne">-&gt; </span><span class="mi">3480</span>         <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3481</span>         <span class="n">d</span> <span class="o">=</span> <span class="n">Dummy</span><span class="p">(</span><span class="s1">&#39;logx&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3482</span>         <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\cache.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>                 <span class="n">retval</span> <span class="o">=</span> <span class="n">cfunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>             <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;unhashable type:&#39;</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">as_leading_term</span><span class="nt">(self, logx, cdir, *symbols)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3441</span>         <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3442</span>             <span class="k">return</span> <span class="bp">self</span>
+<span class="ne">-&gt; </span><span class="mi">3443</span>         <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3444</span>         <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3445</span>             <span class="kn">from</span> <span class="nn">sympy.simplify.powsimp</span> <span class="kn">import</span> <span class="n">powsimp</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\mul.py</span> in <span class="ni">_eval_as_leading_term</span><span class="nt">(self, x, logx, cdir)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2020</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2021</span>     <span class="k">def</span> <span class="nf">_eval_as_leading_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2022</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">])</span>
+<span class="g g-Whitespace">   </span><span class="mi">2023</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2024</span>     <span class="k">def</span> <span class="nf">_eval_conjugate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\mul.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2020</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2021</span>     <span class="k">def</span> <span class="nf">_eval_as_leading_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2022</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">])</span>
+<span class="g g-Whitespace">   </span><span class="mi">2023</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2024</span>     <span class="k">def</span> <span class="nf">_eval_conjugate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\cache.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>                 <span class="n">retval</span> <span class="o">=</span> <span class="n">cfunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>             <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;unhashable type:&#39;</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">as_leading_term</span><span class="nt">(self, logx, cdir, *symbols)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3441</span>         <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3442</span>             <span class="k">return</span> <span class="bp">self</span>
+<span class="ne">-&gt; </span><span class="mi">3443</span>         <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3444</span>         <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3445</span>             <span class="kn">from</span> <span class="nn">sympy.simplify.powsimp</span> <span class="kn">import</span> <span class="n">powsimp</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\functions\special\hyper.py</span> in <span class="ni">_eval_as_leading_term</span><span class="nt">(self, x, logx, cdir)</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="k">def</span> <span class="nf">_eval_as_leading_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span>         <span class="kn">from</span> <span class="nn">sympy.simplify.hyperexpand</span> <span class="kn">import</span> <span class="n">hyperexpand</span>
+<span class="ne">--&gt; </span><span class="mi">699</span>         <span class="k">return</span> <span class="n">hyperexpand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span> 
+<span class="g g-Whitespace">    </span><span class="mi">701</span>     <span class="k">def</span> <span class="nf">integrand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\cache.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>                 <span class="n">retval</span> <span class="o">=</span> <span class="n">cfunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>             <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;unhashable type:&#39;</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">as_leading_term</span><span class="nt">(self, logx, cdir, *symbols)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3441</span>         <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3442</span>             <span class="k">return</span> <span class="bp">self</span>
+<span class="ne">-&gt; </span><span class="mi">3443</span>         <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="n">logx</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="n">cdir</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3444</span>         <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3445</span>             <span class="kn">from</span> <span class="nn">sympy.simplify.powsimp</span> <span class="kn">import</span> <span class="n">powsimp</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\functions\elementary\piecewise.py</span> in <span class="ni">_eval_as_leading_term</span><span class="nt">(self, x, logx, cdir)</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span>     <span class="k">def</span> <span class="nf">_eval_as_leading_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cdir</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">315</span>             <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">c</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span>                 <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">as_leading_term</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">subs</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">991</span>             <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span>
+<span class="g g-Whitespace">    </span><span class="mi">992</span>             <span class="k">for</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">993</span>                 <span class="n">rv</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">_subs</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">994</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rv</span><span class="p">,</span> <span class="n">Basic</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">995</span>                     <span class="k">break</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\cache.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>                 <span class="n">retval</span> <span class="o">=</span> <span class="n">cfunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>             <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;unhashable type:&#39;</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">_subs</span><span class="nt">(self, old, new, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1105</span>         <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_subs</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1106</span>         <span class="k">if</span> <span class="n">rv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1107</span>             <span class="n">rv</span> <span class="o">=</span> <span class="n">fallback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1108</span>         <span class="k">return</span> <span class="n">rv</span>
+<span class="g g-Whitespace">   </span><span class="mi">1109</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">fallback</span><span class="nt">(self, old, new)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1082</span>                     <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg</span>
+<span class="g g-Whitespace">   </span><span class="mi">1083</span>             <span class="k">if</span> <span class="n">hit</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1084</span>                 <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1085</span>                 <span class="n">hack2</span> <span class="o">=</span> <span class="n">hints</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hack2&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1086</span>                 <span class="k">if</span> <span class="n">hack2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_Mul</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rv</span><span class="o">.</span><span class="n">is_Mul</span><span class="p">:</span>  <span class="c1"># 2-arg hack</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\relational.py</span> in <span class="ni">__new__</span><span class="nt">(cls, lhs, rhs, **options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">832</span>             <span class="k">for</span> <span class="n">me</span> <span class="ow">in</span> <span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">833</span>                 <span class="k">if</span> <span class="n">me</span><span class="o">.</span><span class="n">is_extended_real</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">834</span>                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Invalid comparison of non-real </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">me</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">835</span>                 <span class="k">if</span> <span class="n">me</span> <span class="ow">is</span> <span class="n">S</span><span class="o">.</span><span class="n">NaN</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">836</span>                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Invalid NaN comparison&quot;</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: Invalid comparison of non-real zoo
+</pre></div>
+</div>
+</div>
+</div>
+<p>So Homogeneous equation of motion cannot be Fourier transformed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Equation_of_Motion_in_frequency_domain_homogeneous</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">c</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+<span class="n">Equation_of_Motion_in_frequency_domain</span> <span class="o">=</span> <span class="n">Equation_of_Motion_in_frequency_domain_homogeneous</span> <span class="o">-</span> <span class="n">f_phi</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Equation_of_Motion_in_frequency_domain</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle c \mathcal{F}_{t}\left[\frac{d}{d t} x{\left(t \right)}\right]\left(\phi\right) + k \mathcal{F}_{t}\left[x{\left(t \right)}\right]\left(\phi\right) + m \mathcal{F}_{t}\left[\frac{d^{2}}{d t^{2}} x{\left(t \right)}\right]\left(\phi\right) - \frac{i \left(1 - e^{2 i \pi \phi \tau}\right) e^{- 4 i \pi \phi \tau}}{2 \pi \phi}\]</div>
+</div>
+</div>
+<p>Derivatives of <span class="math notranslate nohighlight">\({d \over {dt}}x\left( t \right)\)</span> not evaluated</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Equation_of_Motion_in_frequency_domain</span> <span class="o">=</span> <span class="n">Equation_of_Motion_in_frequency_domain</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">),</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">phi</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">))</span>
+<span class="n">Equation_of_Motion_in_frequency_domain</span> <span class="o">=</span> <span class="n">Equation_of_Motion_in_frequency_domain</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">),(</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">phi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">fourier_transform</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">t</span><span class="p">,</span><span class="n">phi</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Equation_of_Motion_in_frequency_domain</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - 4 \pi^{2} c^{2} m \phi^{2} \mathcal{F}_{t}\left[x{\left(t \right)}\right]\left(\phi\right) - 2 i \pi c^{2} \phi \mathcal{F}_{t}\left[x{\left(t \right)}\right]\left(\phi\right) + k \mathcal{F}_{t}\left[x{\left(t \right)}\right]\left(\phi\right) - \frac{i \left(1 - e^{2 i \pi \phi \tau}\right) e^{- 4 i \pi \phi \tau}}{2 \pi \phi}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution_in_frequency_domain</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">Equation_of_Motion_in_frequency_domain</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">FourierTransform</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">phi</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">solution_in_frequency_domain</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{i \left(e^{2 i \pi \phi \tau} - 1\right) e^{- 4 i \pi \phi \tau}}{2 \pi \phi \left(4 \pi^{2} c^{2} m \phi^{2} + 2 i \pi c^{2} \phi - k\right)}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p0</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">solution_in_frequency_domain</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">k</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="n">c</span><span class="p">,</span><span class="mf">0.75</span><span class="p">)])),(</span><span class="n">phi</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">15</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Real part&#39;</span> <span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">adaptive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">nb_of_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">im</span><span class="p">(</span><span class="n">solution_in_frequency_domain</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">k</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="n">c</span><span class="p">,</span><span class="mf">0.75</span><span class="p">)])),(</span><span class="n">phi</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">15</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Imaginary part&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">adaptive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">nb_of_points</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/CIE_4140_Lecture_3_4_Python_17_0.png" src="../_images/CIE_4140_Lecture_3_4_Python_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">inverse_fourier_transform</span><span class="p">(</span><span class="n">solution_in_frequency_domain</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle i \left(\mathcal{F}^{-1}_{\phi}\left[\frac{1}{8 \pi^{3} c^{2} m \phi^{3} e^{2 i \pi \phi \tau} + 4 i \pi^{2} c^{2} \phi^{2} e^{2 i \pi \phi \tau} - 2 \pi k \phi e^{2 i \pi \phi \tau}}\right]\left(t\right) - \mathcal{F}^{-1}_{\phi}\left[\frac{1}{8 \pi^{3} c^{2} m \phi^{3} e^{4 i \pi \phi \tau} + 4 i \pi^{2} c^{2} \phi^{2} e^{4 i \pi \phi \tau} - 2 \pi k \phi e^{4 i \pi \phi \tau}}\right]\left(t\right)\right)\]</div>
+</div>
+</div>
+<p>Takes quite a while</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution_in_frequency_domain</span> <span class="o">=</span> <span class="n">solution</span>
+<span class="n">solution_in_frequency_domain_numeric</span> <span class="o">=</span> <span class="n">solution_in_frequency_domain</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">tau</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="n">k</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">solution_in_frequency_domain_numeric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle i \left(\mathcal{F}^{-1}_{\phi}\left[\frac{1}{4.5 \pi^{3} \phi^{3} e^{4 i \pi \phi} + 2.25 i \pi^{2} \phi^{2} e^{4 i \pi \phi} - 8 \pi \phi e^{4 i \pi \phi}}\right]\left(t\right) - \mathcal{F}^{-1}_{\phi}\left[\frac{1}{4.5 \pi^{3} \phi^{3} e^{8 i \pi \phi} + 2.25 i \pi^{2} \phi^{2} e^{8 i \pi \phi} - 8 \pi \phi e^{8 i \pi \phi}}\right]\left(t\right)\right)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution_in_frequency_domain_numeric</span><span class="p">,(</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>             <span class="c1">#The result can be sympy.Float. Hence wrap it with complex type.</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>             <span class="n">result</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lambda_func</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>             <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-7</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">272</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span> 
+
+<span class="nn">&lt;string&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x0)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">__complex__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span>         <span class="n">re</span><span class="p">,</span> <span class="n">im</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">as_real_imag</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">350</span>         <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">im</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">__float__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot convert complex to float&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">345</span>         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot convert expression to float&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span> 
+
+<span class="ne">TypeError</span>: Cannot convert expression to float
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>             <span class="c1">#The result can be sympy.Float. Hence wrap it with complex type.</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>             <span class="n">result</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lambda_func</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>             <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-7</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">272</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span> 
+
+<span class="nn">&lt;string&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x0)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">__float__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot convert complex to float&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">345</span>         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot convert expression to float&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span> 
+
+<span class="ne">TypeError</span>: Cannot convert expression to float
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_10168</span>\<span class="mf">1915909163.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution_in_frequency_domain_numeric</span><span class="p">,(</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">plot</span><span class="nt">(show, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1852</span>     <span class="n">plots</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="o">*</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1853</span>     <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1854</span>         <span class="n">plots</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1855</span>     <span class="k">return</span> <span class="n">plots</span>
+<span class="g g-Whitespace">   </span><span class="mi">1856</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">show</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">240</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> 
+<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">show</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1531</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1532</span>     <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1533</span>         <span class="bp">self</span><span class="o">.</span><span class="n">process_series</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1534</span>         <span class="c1">#TODO after fixing https://github.com/ipython/ipython/issues/1255</span>
+<span class="g g-Whitespace">   </span><span class="mi">1535</span>         <span class="c1"># you can uncomment the next line and remove the pyplot.show() call</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">process_series</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1528</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">PlotGrid</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1529</span>                 <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1530</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_process_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1531</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1532</span>     <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">_process_series</span><span class="nt">(self, series, ax, parent)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span>             <span class="c1"># Create the collections</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">is_2Dline</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1355</span>                 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span>                 <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">line_color</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span>
+<span class="g g-Whitespace">   </span><span class="mi">1357</span>                         <span class="n">callable</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">line_color</span><span class="p">)):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">get_data</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span><span class="s2">         np = import_module(&#39;numpy&#39;)</span>
+<span class="ne">--&gt; </span><span class="mi">594</span><span class="s2">         points = self.get_points()</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span><span class="s2">         if self.steps is True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span><span class="s2">             if len(points) == 2:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">get_points</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="s2">                     y_coords.append(q[1])</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">768</span><span class="s2">             f_start = f(self.start)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s2">             f_end = f(self.end)</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s2">             x_coords.append(self.start)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span><span class="s2">             if self.lambda_func == self.lambda_func_1:</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span><span class="s2">                 self.lambda_func = self.lambda_func_2</span>
+<span class="ne">--&gt; </span><span class="mi">188</span><span class="s2">                 return self.__call__(args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span><span class="s2">             self.failure = True</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span><span class="s2">                 &#39;We are trying a failback method that may still work. &#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span><span class="s2">                 &#39;Please report this as a bug.&#39;, stacklevel=2)</span>
+<span class="ne">--&gt; </span><span class="mi">196</span><span class="s2">             return self.__call__(args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="s2">         except TypeError as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="s2">             if self.failure:</span>
+<span class="ne">--&gt; </span><span class="mi">184</span><span class="s2">                 raise e</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span><span class="s2">             if self.lambda_func == self.lambda_func_1:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="s2">             #The result can be sympy.Float. Hence wrap it with complex type.</span>
+<span class="ne">--&gt; </span><span class="mi">176</span><span class="s2">             result = complex(self.lambda_func(args))</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span><span class="s2">             if abs(result.imag) &gt; 1e-7 * abs(result):</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span><span class="s2">                 return None</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span><span class="s2">     def __call__(self, *args, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">272</span><span class="s2">         return self.lambda_func(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span><span class="s2"> </span>
+
+<span class="nn">&lt;string&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x0)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">__complex__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span><span class="s2">         result = self.evalf()</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span><span class="s2">         re, im = result.as_real_imag()</span>
+<span class="ne">--&gt; </span><span class="mi">350</span><span class="s2">         return complex(float(re), float(im))</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span><span class="s2">     @sympify_return([(&#39;other&#39;, &#39;Expr&#39;)], NotImplemented)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">__float__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span><span class="s2">         if result.is_number and result.as_real_imag()[1]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span><span class="s2">             raise TypeError(&quot;Cannot convert complex to float&quot;)</span>
+<span class="ne">--&gt; </span><span class="mi">345</span><span class="s2">         raise TypeError(&quot;Cannot convert expression to float&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span><span class="s2">     def __complex__(self):</span>
+
+<span class="ne">TypeError</span>: Cannot convert expression to float
+</pre></div>
+</div>
+<img alt="../_images/CIE_4140_Lecture_3_4_Python_21_1.png" src="../_images/CIE_4140_Lecture_3_4_Python_21_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">inverse_fourier_transform</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">solution_in_frequency_domain</span><span class="p">),</span> <span class="n">phi</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">solution2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_10168</span>\<span class="mf">656507634.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">solution2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">inverse_fourier_transform</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">solution_in_frequency_domain</span><span class="p">),</span> <span class="n">phi</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">solution2</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">inverse_fourier_transform</span><span class="nt">(F, k, x, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2317</span>     <span class="n">mellin_transform</span><span class="p">,</span> <span class="n">laplace_transform</span>
+<span class="g g-Whitespace">   </span><span class="mi">2318</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">2319</span><span class="sd">     return InverseFourierTransform(F, k, x).doit(**hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2320</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2321</span><span class="sd"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span><span class="sd">                     extra += [x[1:]]</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span><span class="sd">             if simplify==True:</span>
+<span class="ne">--&gt; </span><span class="mi">196</span><span class="sd">                 res = Add(*ress).simplify()</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="sd">             else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="sd">                 res = Add(*ress)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">simplify</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1761</span><span class="sd">         &quot;&quot;&quot;</span><span class="n">See</span> <span class="n">the</span> <span class="n">simplify</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">sympy</span><span class="o">.</span><span class="n">simplify</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1762</span><span class="s2">         from sympy.simplify.simplify import simplify</span>
+<span class="ne">-&gt; </span><span class="mi">1763</span><span class="s2">         return simplify(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1764</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1765</span><span class="s2">     def refine(self, assumption=True):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\simplify.py</span> in <span class="ni">simplify</span><span class="nt">(expr, ratio, measure, rational, inverse, doit, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span><span class="s2">         expr = nfloat(expr, exponent=False)</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">766</span><span class="s2">     return done(expr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\simplify.py</span> in <span class="ni">done</span><span class="nt">(e)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span><span class="s2">     def done(e):</span>
+<span class="ne">--&gt; </span><span class="mi">586</span><span class="s2">         rv = e.doit() if doit else e</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="s2">         return shorter(rv, collect_abs(rv))</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="s2">     def doit(self, **hints):</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="s2">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span><span class="s2">             terms = [term.doit(**hints) for term in self.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="s2">             terms = self.args</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="s2">     def doit(self, **hints):</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="s2">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span><span class="s2">             terms = [term.doit(**hints) for term in self.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="s2">             terms = self.args</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="s2">     def doit(self, **hints):</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="s2">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span><span class="s2">             terms = [term.doit(**hints) for term in self.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="s2">             terms = self.args</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="s2">     def doit(self, **hints):</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="s2">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span><span class="s2">             terms = [term.doit(**hints) for term in self.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="s2">             terms = self.args</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="s2">         hints[&#39;simplify&#39;] = simplify</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">174</span><span class="s2">         fn, T = self._try_directly(**hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="s2">         if T is not None:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_try_directly</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span><span class="s2">         if try_directly:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">138</span><span class="s2">                 T = self._compute_transform(self.function,</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="s2">                     self.function_variable, self.transform_variable, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="s2">             except IntegralTransformError:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_compute_transform</span><span class="nt">(self, f, x, k, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2188</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2189</span><span class="s2">     def _compute_transform(self, f, x, k, **hints):</span>
+<span class="ne">-&gt; </span><span class="mi">2190</span><span class="s2">         return _fourier_transform(f, x, k,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2191</span><span class="s2">                                   self.a(), self.b(),</span>
+<span class="g g-Whitespace">   </span><span class="mi">2192</span><span class="s2">                                   self.__class__._name, **hints)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">wrapper</span><span class="nt">(noconds, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span><span class="s2">         @wraps(func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span><span class="s2">         def wrapper(*args, noconds=default, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">256</span><span class="s2">             res = func(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="s2">             if noconds:</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span><span class="s2">                 return res[0]</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_fourier_transform</span><span class="nt">(f, x, k, a, b, name, simplify)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2157</span><span class="s2">     and inverse Fourier transforms.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2158</span><span class="s2">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">2159</span>     <span class="n">F</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">S</span><span class="o">.</span><span class="n">ImaginaryUnit</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">k</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">NegativeInfinity</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">Infinity</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2160</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2161</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">F</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="n">Integral</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1565</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">integral</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span>         <span class="k">return</span> <span class="n">integral</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>         <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)</span> <span class="k">else</span> <span class="n">a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>                         <span class="ow">and</span> <span class="ow">not</span> <span class="n">function</span><span class="o">.</span><span class="n">is_Poly</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>                         <span class="p">(</span><span class="n">xab</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="n">oo</span><span class="p">,</span> <span class="o">-</span><span class="n">oo</span><span class="p">)</span> <span class="ow">or</span> <span class="n">xab</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="n">oo</span><span class="p">,</span> <span class="o">-</span><span class="n">oo</span><span class="p">))):</span>
+<span class="ne">--&gt; </span><span class="mi">597</span>                     <span class="n">ret</span> <span class="o">=</span> <span class="n">try_meijerg</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">xab</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>                     <span class="k">if</span> <span class="n">ret</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span>                         <span class="n">function</span> <span class="o">=</span> <span class="n">ret</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">try_meijerg</span><span class="nt">(function, xab)</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span>                         <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">xab</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>                         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">567</span>                             <span class="n">res</span> <span class="o">=</span> <span class="n">meijerint_definite</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>                         <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>                             <span class="n">_debug</span><span class="p">(</span><span class="s1">&#39;NotImplementedError &#39;</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">meijerint_definite</span><span class="nt">(f, x, a, b)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1844</span>                 <span class="n">_debug</span><span class="p">(</span><span class="s1">&#39;  Non-real splitting point.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1845</span>                 <span class="k">continue</span>
+<span class="ne">-&gt; </span><span class="mi">1846</span>             <span class="n">res1</span> <span class="o">=</span> <span class="n">_meijerint_definite_2</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1847</span>             <span class="k">if</span> <span class="n">res1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1848</span>                 <span class="n">_debug</span><span class="p">(</span><span class="s1">&#39;  But could not compute first integral.&#39;</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">_meijerint_definite_2</span><span class="nt">(f, x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1974</span>     <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">explanation</span> <span class="ow">in</span> <span class="n">_guess_expansion</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1975</span>         <span class="n">_debug</span><span class="p">(</span><span class="s1">&#39;Trying&#39;</span><span class="p">,</span> <span class="n">explanation</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1976</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">_meijerint_definite_3</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1977</span>         <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1978</span>             <span class="k">return</span> <span class="n">res</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">_meijerint_definite_3</span><span class="nt">(f, x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1986</span>     <span class="n">integral</span><span class="o">.</span> <span class="n">If</span> <span class="n">this</span> <span class="n">fails</span><span class="p">,</span> <span class="n">it</span> <span class="n">tries</span> <span class="n">using</span> <span class="n">linearity</span><span class="o">.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1987</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1988</span><span class="sd">     res = _meijerint_definite_4(f, x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1989</span><span class="sd">     if res and res[1] != False:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1990</span><span class="sd">         return res</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">_meijerint_definite_4</span><span class="nt">(f, x, only_double)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2043</span><span class="sd">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2044</span><span class="sd">                 _debug(&#39;Result before branch substitutions is:&#39;, res)</span>
+<span class="ne">-&gt; </span><span class="mi">2045</span><span class="sd">                 return _my_unpolarify(hyperexpand(res)), cond</span>
+<span class="g g-Whitespace">   </span><span class="mi">2046</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2047</span><span class="sd">     # Try two G functions.</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">_my_unpolarify</span><span class="nt">(f)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2004</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2005</span><span class="sd"> def _my_unpolarify(f):</span>
+<span class="ne">-&gt; </span><span class="mi">2006</span><span class="sd">     return _eval_cond(unpolarify(f))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2007</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2008</span><span class="sd"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">_eval_cond</span><span class="nt">(cond)</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span><span class="sd">     if isinstance(cond, bool):</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span><span class="sd">         return cond</span>
+<span class="ne">--&gt; </span><span class="mi">734</span><span class="sd">     return _condsimp(cond.doit())</span>
+<span class="g g-Whitespace">    </span><span class="mi">735</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span><span class="sd"> ####################################################################</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="sd">     def doit(self, **hints):</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="sd">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span><span class="sd">             terms = [term.doit(**hints) for term in self.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="sd">             terms = self.args</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="sd">     def doit(self, **hints):</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="sd">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span><span class="sd">             terms = [term.doit(**hints) for term in self.args]</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="sd">             terms = self.args</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1752</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1753</span>         <span class="k">if</span> <span class="n">hints</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deep&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1754</span>             <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">term</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">hints</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">Basic</span><span class="p">)</span> <span class="k">else</span> <span class="n">term</span>
+<span class="g g-Whitespace">   </span><span class="mi">1755</span>                                          <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1756</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">terms</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1752</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1753</span><span class="sd">         if hints.get(&#39;deep&#39;, True):</span>
+<span class="ne">-&gt; </span><span class="mi">1754</span><span class="sd">             terms = [term.doit(**hints) if isinstance(term, Basic) else term</span>
+<span class="g g-Whitespace">   </span><span class="mi">1755</span><span class="sd">                                          for term in self.args]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1756</span><span class="sd">             return self.func(*terms)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="sd">         hints[&#39;simplify&#39;] = simplify</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="sd"> </span>
+<span class="ne">--&gt; </span><span class="mi">174</span><span class="sd">         fn, T = self._try_directly(**hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="sd">         if T is not None:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_try_directly</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span><span class="sd">         if try_directly:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">138</span><span class="sd">                 T = self._compute_transform(self.function,</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd">                     self.function_variable, self.transform_variable, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="sd">             except IntegralTransformError:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_compute_transform</span><span class="nt">(self, f, x, k, **hints)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2188</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2189</span><span class="sd">     def _compute_transform(self, f, x, k, **hints):</span>
+<span class="ne">-&gt; </span><span class="mi">2190</span><span class="sd">         return _fourier_transform(f, x, k,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2191</span><span class="sd">                                   self.a(), self.b(),</span>
+<span class="g g-Whitespace">   </span><span class="mi">2192</span><span class="sd">                                   self.__class__._name, **hints)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">wrapper</span><span class="nt">(noconds, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span><span class="sd">         @wraps(func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span><span class="sd">         def wrapper(*args, noconds=default, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">256</span><span class="sd">             res = func(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="sd">             if noconds:</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span><span class="sd">                 return res[0]</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\transforms.py</span> in <span class="ni">_fourier_transform</span><span class="nt">(f, x, k, a, b, name, simplify)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2162</span><span class="sd">         return _simplify(F, simplify), S.true</span>
+<span class="g g-Whitespace">   </span><span class="mi">2163</span><span class="sd"> </span>
+<span class="ne">-&gt; </span><span class="mi">2164</span><span class="sd">     integral_f = integrate(f, (x, S.NegativeInfinity, S.Infinity))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2165</span><span class="sd">     if integral_f in (S.NegativeInfinity, S.Infinity, S.NaN) or integral_f.has(Integral):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2166</span><span class="sd">         raise IntegralTransformError(name, f, &#39;function not integrable on real axis&#39;)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span><span class="sd">     if isinstance(integral, Integral):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span><span class="sd">         return integral.doit(**doit_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span><span class="sd">     else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span><span class="sd">         new_args = [a.doit(**doit_flags) if isinstance(a, Integral) else a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span><span class="sd">                     antideriv = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd">                 else:</span>
+<span class="ne">--&gt; </span><span class="mi">613</span><span class="sd">                     antideriv = self._eval_integral(</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span><span class="sd">                         function, xab[0], **eval_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span><span class="sd">                     if antideriv is None and meijerg is True:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">_eval_integral</span><span class="nt">(self, f, x, meijerg, risch, manual, heurisch, conds, final)</span>
+<span class="g g-Whitespace">    </span><span class="mi">954</span><span class="sd">         if risch is not False:</span>
+<span class="g g-Whitespace">    </span><span class="mi">955</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">956</span><span class="sd">                 result, i = risch_integrate(f, x, separate_integral=True,</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span><span class="sd">                     conds=conds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">958</span><span class="sd">             except NotImplementedError:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\risch.py</span> in <span class="ni">risch_integrate</span><span class="nt">(f, x, extension, handle_first, separate_integral, rewrite_complex, conds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1827</span><span class="sd">         fa, fd = fa.cancel(fd, include=True)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1828</span><span class="sd">         if case == &#39;exp&#39;:</span>
+<span class="ne">-&gt; </span><span class="mi">1829</span><span class="sd">             ans, i, b = integrate_hyperexponential(fa, fd, DE, conds=conds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1830</span><span class="sd">         elif case == &#39;primitive&#39;:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1831</span><span class="sd">             ans, i, b = integrate_primitive(fa, fd, DE)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\risch.py</span> in <span class="ni">integrate_hyperexponential</span><span class="nt">(a, d, DE, z, conds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1576</span><span class="sd">         ret += Piecewise(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1577</span><span class="sd">                 (qas/qds, Ne(qds, 0)),</span>
+<span class="ne">-&gt; </span><span class="mi">1578</span><span class="sd">                 (integrate((p - i).subs(DE.t, 1).subs(s), DE.x), True)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1579</span><span class="sd">             )</span>
+<span class="g g-Whitespace">   </span><span class="mi">1580</span><span class="sd">     else:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span><span class="sd">     if isinstance(integral, Integral):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span><span class="sd">         return integral.doit(**doit_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span><span class="sd">     else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span><span class="sd">         new_args = [a.doit(**doit_flags) if isinstance(a, Integral) else a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span><span class="sd">                     antideriv = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd">                 else:</span>
+<span class="ne">--&gt; </span><span class="mi">613</span><span class="sd">                     antideriv = self._eval_integral(</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span><span class="sd">                         function, xab[0], **eval_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span><span class="sd">                     if antideriv is None and meijerg is True:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">_eval_integral</span><span class="nt">(self, f, x, meijerg, risch, manual, heurisch, conds, final)</span>
+<span class="g g-Whitespace">    </span><span class="mi">954</span><span class="sd">         if risch is not False:</span>
+<span class="g g-Whitespace">    </span><span class="mi">955</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">956</span><span class="sd">                 result, i = risch_integrate(f, x, separate_integral=True,</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span><span class="sd">                     conds=conds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">958</span><span class="sd">             except NotImplementedError:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\risch.py</span> in <span class="ni">risch_integrate</span><span class="nt">(f, x, extension, handle_first, separate_integral, rewrite_complex, conds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1833</span><span class="sd">             # XXX: We can&#39;t call ratint() directly here because it doesn&#39;t</span>
+<span class="g g-Whitespace">   </span><span class="mi">1834</span><span class="sd">             # handle polynomials correctly.</span>
+<span class="ne">-&gt; </span><span class="mi">1835</span><span class="sd">             ans = integrate(fa.as_expr()/fd.as_expr(), DE.x, risch=False)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1836</span><span class="sd">             b = False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1837</span><span class="sd">             i = S.Zero</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span><span class="sd">     if isinstance(integral, Integral):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span><span class="sd">         return integral.doit(**doit_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span><span class="sd">     else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span><span class="sd">         new_args = [a.doit(**doit_flags) if isinstance(a, Integral) else a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span><span class="sd">                     antideriv = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd">                 else:</span>
+<span class="ne">--&gt; </span><span class="mi">613</span><span class="sd">                     antideriv = self._eval_integral(</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span><span class="sd">                         function, xab[0], **eval_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span><span class="sd">                     if antideriv is None and meijerg is True:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">_eval_integral</span><span class="nt">(self, f, x, meijerg, risch, manual, heurisch, conds, final)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span><span class="sd">             #        poly(x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span><span class="sd">             if g.is_rational_function(x) and not (manual or meijerg or risch):</span>
+<span class="ne">-&gt; </span><span class="mi">1041</span><span class="sd">                 parts.append(coeff * ratint(g, x))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1042</span><span class="sd">                 continue</span>
+<span class="g g-Whitespace">   </span><span class="mi">1043</span><span class="sd"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\rationaltools.py</span> in <span class="ni">ratint</span><span class="nt">(f, x, **flags)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="sd">             t = symbol.as_dummy()</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="sd"> </span>
+<span class="ne">---&gt; </span><span class="mi">84</span><span class="sd">         L = ratint_logpart(r, Q, x, t)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="sd">         real = flags.get(&#39;real&#39;)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\rationaltools.py</span> in <span class="ni">ratint_logpart</span><span class="nt">(f, g, x, t)</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span><span class="sd">                 h = h.quo(Poly(a.gcd(q)**j, x))</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span><span class="sd"> </span>
+<span class="ne">--&gt; </span><span class="mi">263</span><span class="sd">             inv, coeffs = h_lc.invert(q), [S.One]</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span><span class="sd">             for coeff in h.coeffs()[1:]:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\polytools.py</span> in <span class="ni">invert</span><span class="nt">(f, g, auto)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2598</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2599</span><span class="sd">         if hasattr(f.rep, &#39;invert&#39;):</span>
+<span class="ne">-&gt; </span><span class="mi">2600</span><span class="sd">             result = F.invert(G)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2601</span><span class="sd">         else:  # pragma: no cover</span>
+<span class="g g-Whitespace">   </span><span class="mi">2602</span><span class="sd">             raise OperationNotSupported(f, &#39;invert&#39;)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\polyclasses.py</span> in <span class="ni">invert</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span><span class="sd">         if not lev:</span>
+<span class="ne">--&gt; </span><span class="mi">651</span><span class="sd">             return per(dup_invert(F, G, dom))</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span><span class="sd">             raise ValueError(&#39;univariate polynomial expected&#39;)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dup_invert</span><span class="nt">(f, g, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">170</span>     <span class="n">s</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">dup_half_gcdex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> 
+<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">if</span> <span class="n">h</span> <span class="o">==</span> <span class="p">[</span><span class="n">K</span><span class="o">.</span><span class="n">one</span><span class="p">]:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\euclidtools.py</span> in <span class="ni">dup_half_gcdex</span><span class="nt">(f, g, K)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>         <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">dup_div</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span>         <span class="n">f</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span>
+<span class="ne">---&gt; </span><span class="mi">78</span>         <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">dup_sub_mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> 
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">dup_quo_ground</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dup_LC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">K</span><span class="p">),</span> <span class="n">K</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dup_sub_mul</span><span class="nt">(f, g, h, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span> 
+<span class="g g-Whitespace">    </span><span class="mi">714</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">715</span><span class="sd">     return dup_sub(f, dup_mul(g, h, K), K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span><span class="sd"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\densearith.py</span> in <span class="ni">dup_mul</span><span class="nt">(f, g, K)</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="sd">             for j in range(max(0, i - dg), min(df, i) + 1):</span>
+<span class="ne">--&gt; </span><span class="mi">767</span><span class="sd">                 coeff += f[j]*g[i - j]</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="sd">             h.append(coeff)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\domains\expressiondomain.py</span> in <span class="ni">__add__</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd">                 return g</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="sd">             else:</span>
+<span class="ne">---&gt; </span><span class="mi">74</span><span class="sd">                 return f.simplify(f.ex + g.ex)</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span><span class="sd">         def __radd__(f, g):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\domains\expressiondomain.py</span> in <span class="ni">simplify</span><span class="nt">(f, ex)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span><span class="sd">         def simplify(f, ex):</span>
+<span class="ne">---&gt; </span><span class="mi">50</span><span class="sd">             return f.__class__(ex.cancel().expand(**eflags))</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd">         def __abs__(f):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\expr.py</span> in <span class="ni">cancel</span><span class="nt">(self, *gens, **args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3731</span><span class="sd">         &quot;&quot;&quot;</span><span class="n">See</span> <span class="n">the</span> <span class="n">cancel</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">sympy</span><span class="o">.</span><span class="n">polys</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3732</span><span class="s2">         from sympy.polys.polytools import cancel</span>
+<span class="ne">-&gt; </span><span class="mi">3733</span><span class="s2">         return cancel(self, *gens, **args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3734</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3735</span><span class="s2">     def invert(self, g, *gens, **args):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\polytools.py</span> in <span class="ni">cancel</span><span class="nt">(f, _signsimp, *gens, **args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6799</span><span class="s2">             return f.xreplace(dict(reps))</span>
+<span class="g g-Whitespace">   </span><span class="mi">6800</span><span class="s2"> </span>
+<span class="ne">-&gt; </span><span class="mi">6801</span><span class="s2">     c, (P, Q) = 1, F.cancel(G)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6802</span><span class="s2">     if opt.get(&#39;polys&#39;, False) and &#39;gens&#39; not in opt:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6803</span><span class="s2">         opt[&#39;gens&#39;] = R.symbols</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">cancel</span><span class="nt">(self, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2221</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2222</span><span class="s2">         if not (domain.is_Field and domain.has_assoc_Ring):</span>
+<span class="ne">-&gt; </span><span class="mi">2223</span><span class="s2">             _, p, q = f.cofactors(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2224</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2225</span><span class="s2">             new_ring = ring.clone(domain=domain.get_ring())</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">cofactors</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2138</span><span class="s2">         J, (f, g) = f.deflate(g)</span>
+<span class="ne">-&gt; </span><span class="mi">2139</span><span class="s2">         h, cff, cfg = f._gcd(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2141</span><span class="s2">         return (h.inflate(J), cff.inflate(J), cfg.inflate(J))</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">_gcd</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2170</span><span class="s2">             return f._gcd_QQ(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2171</span><span class="s2">         elif ring.domain.is_ZZ:</span>
+<span class="ne">-&gt; </span><span class="mi">2172</span><span class="s2">             return f._gcd_ZZ(g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2173</span><span class="s2">         else: # TODO: don&#39;t use dense representation (port PRS algorithms)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2174</span><span class="s2">             return ring.dmp_inner_gcd(f, g)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">_gcd_ZZ</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2175</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2176</span><span class="s2">     def _gcd_ZZ(f, g):</span>
+<span class="ne">-&gt; </span><span class="mi">2177</span><span class="s2">         return heugcd(f, g)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2178</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2179</span><span class="s2">     def _gcd_QQ(self, g):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\heuristicgcd.py</span> in <span class="ni">heugcd</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span><span class="s2">                 h, cff, cfg = domain.cofactors(ff, gg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span><span class="s2">             else:</span>
+<span class="ne">---&gt; </span><span class="mi">80</span><span class="s2">                 h, cff, cfg = heugcd(ff, gg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             h = _gcd_interpolate(h, x, ring)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\heuristicgcd.py</span> in <span class="ni">heugcd</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span><span class="s2">                 h, cff, cfg = domain.cofactors(ff, gg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span><span class="s2">             else:</span>
+<span class="ne">---&gt; </span><span class="mi">80</span><span class="s2">                 h, cff, cfg = heugcd(ff, gg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             h = _gcd_interpolate(h, x, ring)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\heuristicgcd.py</span> in <span class="ni">heugcd</span><span class="nt">(f, g)</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span><span class="s2">                 h, cff, cfg = heugcd(ff, gg)</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">82</span><span class="s2">             h = _gcd_interpolate(h, x, ring)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">             h = h.primitive()[1]</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\heuristicgcd.py</span> in <span class="ni">_gcd_interpolate</span><span class="nt">(h, x, ring)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span><span class="s2">         while h:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span><span class="s2">             g = h.trunc_ground(x)</span>
+<span class="ne">--&gt; </span><span class="mi">138</span><span class="s2">             h = (h - g).quo_ground(x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="s2">             # f += X**i*g</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">quo_ground</span><span class="nt">(f, x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1994</span><span class="s2">             terms = [ (monom, quo(coeff, x)) for monom, coeff in f.iterterms() ]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1995</span><span class="s2">         else:</span>
+<span class="ne">-&gt; </span><span class="mi">1996</span><span class="s2">             terms = [ (monom, coeff // x) for monom, coeff in f.iterterms() if not (coeff </span><span class="si">% x</span><span class="s2">) ]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1997</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1998</span><span class="s2">         return f.new(terms)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\polys\rings.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1994</span><span class="s2">             terms = [ (monom, quo(coeff, x)) for monom, coeff in f.iterterms() ]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1995</span><span class="s2">         else:</span>
+<span class="ne">-&gt; </span><span class="mi">1996</span><span class="s2">             terms = [ (monom, coeff // x) for monom, coeff in f.iterterms() if not (coeff </span><span class="si">% x</span><span class="s2">) ]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1997</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1998</span><span class="s2">         return f.new(terms)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Examples_Dynamics_of_Structures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="CIE_4140_Lecture_3_3_Python.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">CIE_4140_Lecture_3_3_Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CIE4140_Lecture_13_Part_1_Python.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CIE4140_Lecture_13_Part_1_Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom van Woudenberg<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1250 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SymPy example for Structural Mechanics problems &#8212; SymPy instructions and examples</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basisgeval college statisch onbepaald met Python" href="../Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html" />
+    <link rel="prev" title="Het gebruik van Python bij Constructiemechanica" href="Het_gebruik_van_Python_bij_ConstructieMechanica.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SymPy instructions and examples</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to this SymPy example and instruction book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Instruction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Het_gebruik_van_Python_bij_ConstructieMechanica.html">
+   Het gebruik van Python bij Constructiemechanica
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   SymPy example for Structural Mechanics problems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Constructiemechanics 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html">
+   Basisgeval college statisch onbepaald met Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht.html">
+   Introductie SymPy voor Matrixframe opdracht
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode.html">
+   Introductie verplaatsingenmethode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_1.html">
+   Sympy voorbeeld 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_2.html">
+   Sympy voorbeeld 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_3.html">
+   Sympy voorbeeld 3
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Structural Mechanics 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Lecture-example-ODE.html">
+   Lecture example ODE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Vergelijking_methodes.html">
+   Vergelijking oplosmethodes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_1_work_and_energy.html">
+   Exercise 1 work and energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_6_Work_and_Energy.html">
+   Exercise 6 Work and Energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Taylor_approximation.html">
+   Taylor approximation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generic examples Structural Mechanics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger.html">
+   DV-SB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger-F.html">
+   DV-SB-ligger-F
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger.html">
+   DV-SOB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer.html">
+   DV-SOB-ligger-met-veer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/Vakwerk_SB.html">
+   Vakwerk_SB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/VGM-q-last.html">
+   VGM-q-last
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Base Structural Engineering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Exact_length_parabolic_cable.html">
+   Parabolic cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Example_Extension_week_1_strain_energy.html">
+   Example Extension week 1 strain energy#
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable.html">
+   Lecture 4 exercise 1 cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Taylor_series.html">
+   Taylor series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Wrinkler_element_definition.html">
+   Wrinkler element definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Base_Structural_Engineering/Variation_of_load_cable.html">
+   Variation of load cable
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Slender Structures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Assignment_bending_shear_beam_B.html">
+   Assignment bending shear beam B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Beam_with_varying_EI_and_q.html">
+   Beam with varying EI and q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Constrained_bending_with_tension.html">
+   Constrained bending with tension
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Example_riser_model.html">
+   Exampel riser model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Example_wheel_on_cable_dirac.html">
+   Example wheel on cable dirac
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Foundation_pile.html">
+   Foundation pile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Park_bridge_2018.html">
+   Park bridge 2018
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Timoshenko_Beam.html">
+   Timoshenko beam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Timoshenko_Beam_element_definition.html">
+   Timoshenko Beam element definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamics of Structures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_1_Python.html">
+   CIE_4140_Lecture_2_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_2_Python.html">
+   CIE_4140_Lecture_2_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_1_Python.html">
+   CIE_4140_Lecture_3_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_2_Python.html">
+   CIE_4140_Lecture_3_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_3_Python.html">
+   CIE_4140_Lecture_3_3_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python.html">
+   CIE_4140_Lecture_3_4_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python.html">
+   CIE4140_Lecture_13_Part_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python_seperate_q.html">
+   CIE4140_Lecture_13_Part_1_Python_seperate_q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_2_Python.html">
+   CIE4140_Lecture_13_Part_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_18_Part_1_Python.html">
+   CIE_4140_Lecture_18_Part_1_Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Other_examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Other_examples/Singularity_function_with_hinged_beam.html">
+   Singularity functions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Instruction/SymPy_example_for_Structural_Mechanics_problems.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-implementation-with-singularity-functions">
+   Alternative implementation with Singularity Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-3-ode-a-alternative-implementation">
+   <a id="3_ODE">
+   </a>
+   Alternative implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-plotting">
+   Alternative plotting
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SymPy example for Structural Mechanics problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-implementation-with-singularity-functions">
+   Alternative implementation with Singularity Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-3-ode-a-alternative-implementation">
+   <a id="3_ODE">
+   </a>
+   Alternative implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-plotting">
+   Alternative plotting
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="sympy-example-for-structural-mechanics-problems">
+<h1>SymPy example for Structural Mechanics problems<a class="headerlink" href="#sympy-example-for-structural-mechanics-problems" title="Permalink to this headline">#</a></h1>
+<p>With SymPy, a very powerfull computer algebra tool, mechanics problems can be solved in an easy and fast way. It will take over the cumbersome handcalculations. However the engineering part; the thinking, the modelling and the correct input of the specifications still remains a human matter.
+A simple beam is taken as an example. The beam is loaded with a uniform load <code class="docutils literal notranslate"><span class="pre">q</span></code> on a part of the beam and a force <code class="docutils literal notranslate"><span class="pre">F</span></code>. All loads are considered to be static loads. The beam is a prismatic beam with a bending stiffness <code class="docutils literal notranslate"><span class="pre">EI</span></code>.</p>
+<p><img alt="figuur 3" src="../_images/Beam.gif" /></p>
+<p>With SymPy the beam deflections and the moment and shear distribution along the beam axis will be computed. The model used is the beam-model which can be discribed with the fourth order differential equation (DE):</p>
+<p><span class="math notranslate nohighlight">\(EI{{{d^4}w} \over {d{x^4}}} = q\left( x \right)\)</span></p>
+<p>The solution of the problem can only be found with the correct boundary conditions. In this simple case the four required boundary conditions are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w(0)=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M(0)=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(w(L)=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M(L)=0\)</span></p></li>
+</ul>
+<p>The DE is only valid for domains were the load distibution is continuous differentiable. If the problem is worked out by hand we should have to split the problem in to three domains. Each discontinuity in the loading or the beamproperties urges for a split. Each domain requires four boundary conditions. This would result in 12 boundary conditions. Four of these conditions
+are specified on the outer boundaries of the problem, the other eight are specified on the two connections between the three domains. If we solve this problem with SymPy (see <a class="reference external" href="#3_ODE">Alternative implementation</a> ) however this approach is not necessary. If the load can be specified as one continous differentiable function along the total beam axis we can model the beam as one domain.
+How can we describe the load as one function which is valid for the total beam length? The uniform load <code class="docutils literal notranslate"><span class="pre">q</span></code> can be modelled with a <code class="docutils literal notranslate"><span class="pre">sympy.Heaviside</span></code> function (step function, see Calculus page 49 and 95) and the force <code class="docutils literal notranslate"><span class="pre">F</span></code> can be modelled with a <code class="docutils literal notranslate"><span class="pre">sympy.DiracDelta</span></code> or δ-function. Both functions can be found in the standard mathematics text books or in the help of SymPy.</p>
+<p>In SymPy the modelling of the load looks like this (the 35 kN is not visible in the plot):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">,</span> <span class="n">C4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2 C3 C4&#39;</span><span class="p">)</span> 
+
+<span class="n">Q</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">F</span> <span class="o">=</span> <span class="mi">35</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">))</span><span class="o">+</span><span class="n">F</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">DiracDelta</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 35 \delta\left(x - 9\right) - 10 \theta\left(x - 4\right) + 10\]</div>
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_2_1.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_2_1.png" />
+</div>
+</div>
+<p>In the plot of the load function <code class="docutils literal notranslate"><span class="pre">q</span></code> the force <code class="docutils literal notranslate"><span class="pre">F</span></code> is not visible. However the load exists, this can
+seen by calculating the total load with the integral of the load function.</p>
+<p>The differential equation can now be specified and solved with SymPy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EI</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">diffeq</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">q</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">diffeq</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">rhs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To store the general solution <code class="docutils literal notranslate"><span class="pre">w(x)</span></code> in a simple the function denoted with the variable <code class="docutils literal notranslate"><span class="pre">w</span></code>, we use the righthandside function <code class="docutils literal notranslate"><span class="pre">.rhs</span></code>. This means the right hand side of the resulting <code class="docutils literal notranslate"><span class="pre">sp.dsolve</span></code> operation is stored in the variable <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">EI</span> <span class="o">*</span> <span class="n">kappa</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+           
+<span class="n">Eq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">Eq1</span><span class="p">,</span><span class="n">Eq2</span><span class="p">,</span><span class="n">Eq3</span><span class="p">,</span><span class="n">Eq4</span><span class="p">),(</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">C3</span><span class="p">,</span><span class="n">C4</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The boundary conditions are specified with four equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code> … <code class="docutils literal notranslate"><span class="pre">eq4</span></code> which have to be solved with the <code class="docutils literal notranslate"><span class="pre">sp.solve</span></code> command. The solution of the integration constants has to be substituted in our general solution with <code class="docutils literal notranslate"><span class="pre">.subs</span></code>.</p>
+<p>The results of the calculation can best be viewed with a plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_8_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_8_0.png" />
+</div>
+</div>
+<p>The moment and shear distribution can be found with the known relations between the moment and the displacement field and the moment and the shear forces.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">M</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_10_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_10_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\evalf.py</span> in <span class="ni">evalf</span><span class="nt">(x, prec, options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1493</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1494</span>         <span class="n">rf</span> <span class="o">=</span> <span class="n">evalf_table</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1495</span>         <span class="n">r</span> <span class="o">=</span> <span class="n">rf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: meijerg
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_7524</span>\<span class="mf">2694101761.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">plot</span><span class="nt">(show, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1852</span>     <span class="n">plots</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="o">*</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1853</span>     <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1854</span>         <span class="n">plots</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1855</span>     <span class="k">return</span> <span class="n">plots</span>
+<span class="g g-Whitespace">   </span><span class="mi">1856</span> 
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">show</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">240</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> 
+<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">show</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1531</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1532</span>     <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1533</span>         <span class="bp">self</span><span class="o">.</span><span class="n">process_series</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1534</span>         <span class="c1">#TODO after fixing https://github.com/ipython/ipython/issues/1255</span>
+<span class="g g-Whitespace">   </span><span class="mi">1535</span>         <span class="c1"># you can uncomment the next line and remove the pyplot.show() call</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">process_series</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1528</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">PlotGrid</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1529</span>                 <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1530</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_process_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1531</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1532</span>     <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">_process_series</span><span class="nt">(self, series, ax, parent)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span>             <span class="c1"># Create the collections</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>             <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">is_2Dline</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1355</span>                 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span>                 <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">line_color</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span>
+<span class="g g-Whitespace">   </span><span class="mi">1357</span>                         <span class="n">callable</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">line_color</span><span class="p">)):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">get_data</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span><span class="s2">         np = import_module(&#39;numpy&#39;)</span>
+<span class="ne">--&gt; </span><span class="mi">594</span><span class="s2">         points = self.get_points()</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span><span class="s2">         if self.steps is True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span><span class="s2">             if len(points) == 2:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">get_points</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s2">             x_coords.append(self.start)</span>
+<span class="g g-Whitespace">    </span><span class="mi">771</span><span class="s2">             y_coords.append(f_start)</span>
+<span class="ne">--&gt; </span><span class="mi">772</span><span class="s2">             sample(np.array([self.start, f_start]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">773</span><span class="s2">                    np.array([self.end, f_end]), 0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">774</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="s2">                 elif depth &lt; 6:</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span><span class="s2">                     sample(p, new_point, depth + 1)</span>
+<span class="ne">--&gt; </span><span class="mi">741</span><span class="s2">                     sample(new_point, q, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">743</span><span class="s2">                 # Sample ten points if complex values are encountered</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span><span class="s2">                 # depth of 6. We are not using linspace to avoid aliasing.</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="s2">                 elif depth &lt; 6:</span>
+<span class="ne">--&gt; </span><span class="mi">740</span><span class="s2">                     sample(p, new_point, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span><span class="s2">                     sample(new_point, q, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span><span class="s2">                 # depth of 6. We are not using linspace to avoid aliasing.</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="s2">                 elif depth &lt; 6:</span>
+<span class="ne">--&gt; </span><span class="mi">740</span><span class="s2">                     sample(p, new_point, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span><span class="s2">                     sample(new_point, q, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span><span class="s2">                 # depth of 6. We are not using linspace to avoid aliasing.</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="s2">                 elif depth &lt; 6:</span>
+<span class="ne">--&gt; </span><span class="mi">740</span><span class="s2">                     sample(p, new_point, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span><span class="s2">                     sample(new_point, q, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="s2">                 elif depth &lt; 6:</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span><span class="s2">                     sample(p, new_point, depth + 1)</span>
+<span class="ne">--&gt; </span><span class="mi">741</span><span class="s2">                     sample(new_point, q, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">743</span><span class="s2">                 # Sample ten points if complex values are encountered</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="s2">                 elif depth &lt; 6:</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span><span class="s2">                     sample(p, new_point, depth + 1)</span>
+<span class="ne">--&gt; </span><span class="mi">741</span><span class="s2">                     sample(new_point, q, depth + 1)</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">743</span><span class="s2">                 # Sample ten points if complex values are encountered</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\plot.py</span> in <span class="ni">sample</span><span class="nt">(p, q, depth)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span><span class="s2">                 else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">728</span><span class="s2">                     xnew = p[0] + random * (q[0] - p[0])</span>
+<span class="ne">--&gt; </span><span class="mi">729</span><span class="s2">                 ynew = f(xnew)</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span><span class="s2">                 new_point = np.array([xnew, ynew])</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="s2">             #The result can be sympy.Float. Hence wrap it with complex type.</span>
+<span class="ne">--&gt; </span><span class="mi">176</span><span class="s2">             result = complex(self.lambda_func(args))</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span><span class="s2">             if abs(result.imag) &gt; 1e-7 * abs(result):</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span><span class="s2">                 return None</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\plotting\experimental_lambdify.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span><span class="s2">     def __call__(self, *args, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">272</span><span class="s2">         return self.lambda_func(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span><span class="s2"> </span>
+
+<span class="nn">&lt;string&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x0)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\evalf.py</span> in <span class="ni">evalf</span><span class="nt">(self, n, subs, maxn, chop, strict, quad, verbose)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1656</span><span class="s2">             options[&#39;quad&#39;] = quad</span>
+<span class="g g-Whitespace">   </span><span class="mi">1657</span><span class="s2">         try:</span>
+<span class="ne">-&gt; </span><span class="mi">1658</span><span class="s2">             result = evalf(self, prec + 4, options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1659</span><span class="s2">         except NotImplementedError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1660</span><span class="s2">             # Fall back to the ordinary evalf</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\evalf.py</span> in <span class="ni">evalf</span><span class="nt">(x, prec, options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1498</span><span class="s2">         if &#39;subs&#39; in options:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1499</span><span class="s2">             x = x.subs(evalf_subs(prec, options[&#39;subs&#39;]))</span>
+<span class="ne">-&gt; </span><span class="mi">1500</span><span class="s2">         xe = x._eval_evalf(prec)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1501</span><span class="s2">         if xe is None:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1502</span><span class="s2">             raise NotImplementedError</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\functions\special\hyper.py</span> in <span class="ni">_eval_evalf</span><span class="nt">(self, prec)</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span><span class="s2">         with mpmath.workprec(prec):</span>
+<span class="ne">--&gt; </span><span class="mi">693</span><span class="s2">             v = mpmath.meijerg(ap, bq, z, r)</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span><span class="s2">         return Expr._from_mpmath(v, prec)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\mpmath\functions\hypergeometric.py</span> in <span class="ni">meijerg</span><span class="nt">(ctx, a_s, b_s, z, r, series, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span><span class="s2">                 terms.append((bases, expts, gn, gd, hn, hd, hz))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1057</span><span class="s2">             return terms</span>
+<span class="ne">-&gt; </span><span class="mi">1058</span><span class="s2">     return ctx.hypercomb(h, a+b, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1059</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1060</span><span class="s2"> @defun_wrapped</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\mpmath\functions\hypergeometric.py</span> in <span class="ni">hypercomb</span><span class="nt">(ctx, function, params, discard_known_zeros, **kwargs)</span>
+<span class="nn">    123                 #for b</span> in <span class="ni">beta_s: v *= ctx.rgamma</span><span class="nt">(b)</span>
+<span class="nn">    124                 #for w, c</span> in <span class="ni">zip(w_s, c_s): v *= ctx.power</span><span class="nt">(w, c)</span>
+<span class="ne">--&gt; </span><span class="mi">125</span><span class="s2">                 v = ctx.fprod([ctx.hyper(a_s, b_s, z, **kwargs)] + </span><span class="se">\</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span><span class="s2">                     [ctx.gamma(a) for a in alpha_s] + </span><span class="se">\</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span><span class="s2">                     [ctx.rgamma(b) for b in beta_s] + </span><span class="se">\</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\mpmath\functions\hypergeometric.py</span> in <span class="ni">hyper</span><span class="nt">(ctx, a_s, b_s, z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">         elif q == 0: return ctx._hyp1f0(a_s[0][0], z)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="s2">     elif p == 2:</span>
+<span class="ne">--&gt; </span><span class="mi">226</span><span class="s2">         if   q == 1: return ctx._hyp2f1(a_s, b_s, z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span><span class="s2">         elif q == 2: return ctx._hyp2f2(a_s, b_s, z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span><span class="s2">         elif q == 3: return ctx._hyp2f3(a_s, b_s, z, **kwargs)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\mpmath\functions\hypergeometric.py</span> in <span class="ni">_hyp2f1</span><span class="nt">(ctx, a_s, b_s, z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span><span class="s2">     if absz &lt;= 0.8 or (ctx.isint(a) and a &lt;= 0 and a &gt;= -1000) or </span><span class="se">\</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                       (ctx.isint(b) and b &lt;= 0 and b &gt;= -1000):</span>
+<span class="ne">--&gt; </span><span class="mi">443</span><span class="s2">         return ctx.hypsum(2, 1, (atype, btype, ctype), [a, b, c], z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">     orig = ctx.prec</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\mpmath\ctx_mp.py</span> in <span class="ni">hypsum</span><span class="nt">(ctx, p, q, flags, coeffs, z, accurate_small, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span><span class="s2">                 mag_dict = </span><span class="si">{}</span><span class="s2"></span>
+<span class="ne">--&gt; </span><span class="mi">714</span><span class="s2">             zv, have_complex, magnitude = summator(coeffs, v, prec, wp, </span><span class="se">\</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span><span class="s2">                 epsshift, mag_dict, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span><span class="s2">             cancel = -magnitude</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\mpmath\libmp\libhyper.py</span> in <span class="ni">hypsum_2_1_RR_R_R</span><span class="nt">(coeffs, z, prec, wp, epsshift, magnitude_check, **kwargs)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_11_1.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_11_1.png" />
+</div>
+</div>
+<section id="alternative-implementation-with-singularity-functions">
+<h2>Alternative implementation with Singularity Functions<a class="headerlink" href="#alternative-implementation-with-singularity-functions" title="Permalink to this headline">#</a></h2>
+<p>As you may have noticed, the evaluation of the result of the <code class="docutils literal notranslate"><span class="pre">Heaviside</span></code> and <code class="docutils literal notranslate"><span class="pre">DiracDelta</span></code> function takes a while. An alternative implementation is to make use of the <code class="docutils literal notranslate"><span class="pre">SingularityFunction</span></code>, which evaluates down to the <code class="docutils literal notranslate"><span class="pre">Heaviside</span></code> function for <span class="math notranslate nohighlight">\(n = 0\)</span> and the <code class="docutils literal notranslate"><span class="pre">DiracDelta</span></code> function for <span class="math notranslate nohighlight">\(n=1\)</span>:
+$<span class="math notranslate nohighlight">\(\matrix{
+   n &amp; {{{\langle x - a\rangle }^n}} &amp; {{\text{Physical meaning}}}  \cr 
+   { - 2} &amp; {{\kern 1pt} {d \over {dx}}\delta \left( {x - a} \right){\kern 1pt} {\kern 1pt} } &amp; {{\text{Unit moment at }}x = a}  \cr 
+   { - 1} &amp; {\delta \left( {x - a} \right)} &amp; {{\text{Unit force at }}x = a}  \cr 
+   0 &amp; {H\left( {x - a} \right){\kern 1pt} } &amp; {{\text{Start distributed load at }}x = a}  \cr 
+   1 &amp; {\left( {x - a} \right)H\left( {x - a} \right){\kern 1pt} } &amp; {{\text{Start linear distributed load at }}x = a}  \cr 
+   { &gt; 0} &amp; {{{\left( {x - a} \right)}^n}H\left( {x - a} \right)} &amp; {{\text{Start polynomial at }}x = a}  \cr } \)</span>$</p>
+<p>These functions are easily integrated according to the following rules:
+$<span class="math notranslate nohighlight">\(\int {{{\left\langle {x - a} \right\rangle }^n}dx}  = \left\{ {\matrix{
+   {{{\left\langle {x - a} \right\rangle }^{n + 1}}} &amp; {{\text{if }}n &lt; 0}  \cr 
+   {{{{{\left\langle {x - a} \right\rangle }^{n + 1}}} \over {n + 1}}} &amp; {{\text{if }}n \ge 0}  \cr  } } \right.\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">,</span> <span class="n">C4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2 C3 C4&#39;</span><span class="p">)</span> 
+
+<span class="n">Q</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">F</span> <span class="o">=</span> <span class="mi">35</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">SingularityFunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">SingularityFunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span><span class="n">F</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">SingularityFunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 10 {\left\langle x \right\rangle}^{0} - 10 {\left\langle x - 4 \right\rangle}^{0} + 35 {\left\langle x - 9 \right\rangle}^{-1}\]</div>
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_14_1.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_14_1.png" />
+</div>
+</div>
+<p>As the <code class="docutils literal notranslate"><span class="pre">Singularity</span></code> function is easily integrated, the differential equation is solved by integrating the displacement function <code class="docutils literal notranslate"><span class="pre">q</span></code> four times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EI</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="o">-</span><span class="n">q</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">C1</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">C2</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">M</span> <span class="o">/</span> <span class="n">EI</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">kappa</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">C3</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="o">-</span><span class="n">phi</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">C4</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{C_{1} x^{3}}{60000} - \frac{C_{2} x^{2}}{20000} - C_{3} x + C_{4} + \frac{{\left\langle x \right\rangle}^{4}}{24000} - \frac{{\left\langle x - 4 \right\rangle}^{4}}{24000} + \frac{7 {\left\langle x - 9 \right\rangle}^{3}}{12000}\]</div>
+</div>
+</div>
+<p>The boundary conditions are now included in a similar manner as before, which leads to a neat solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Eq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">Eq1</span><span class="p">,</span><span class="n">Eq2</span><span class="p">,</span><span class="n">Eq3</span><span class="p">,</span><span class="n">Eq4</span><span class="p">),(</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">C3</span><span class="p">,</span><span class="n">C4</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{73 x^{3}}{90000} + \frac{6673 x}{90000} + \frac{{\left\langle x \right\rangle}^{4}}{24000} - \frac{{\left\langle x - 4 \right\rangle}^{4}}{24000} + \frac{7 {\left\langle x - 9 \right\rangle}^{3}}{12000}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_19_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">M</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_20_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_20_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_21_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_21_0.png" />
+</div>
+</div>
+</section>
+<section id="a-id-3-ode-a-alternative-implementation">
+<h2><a id='3_ODE'></a>Alternative implementation<a class="headerlink" href="#a-id-3-ode-a-alternative-implementation" title="Permalink to this headline">#</a></h2>
+<p>Another alternative implementation is to split the beam in three sepeterate DEs, thus avoid the use of the special functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;w1 w2 w3&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">,</span> <span class="n">C4</span><span class="p">,</span> <span class="n">C5</span><span class="p">,</span> <span class="n">C6</span><span class="p">,</span> <span class="n">C7</span><span class="p">,</span> <span class="n">C8</span><span class="p">,</span> <span class="n">C9</span><span class="p">,</span> <span class="n">C10</span><span class="p">,</span> <span class="n">C11</span><span class="p">,</span> <span class="n">C12</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2 C3 C4 C5 C6 C7 C8 C9 C10 C11 C12&#39;</span><span class="p">)</span> 
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">F</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">EI</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">diffeq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">q</span><span class="p">)</span>
+<span class="n">diffeq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">diffeq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">EI</span><span class="o">*</span><span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">([</span><span class="n">diffeq1</span><span class="p">,</span> <span class="n">diffeq2</span><span class="p">,</span> <span class="n">diffeq3</span><span class="p">],[</span><span class="n">w1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">w2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">w3</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">rhs</span>
+
+<span class="n">phi1</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">kappa1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">M1</span> <span class="o">=</span> <span class="n">EI</span> <span class="o">*</span> <span class="n">kappa1</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">phi2</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w2</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">kappa2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi2</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">M2</span> <span class="o">=</span> <span class="n">EI</span> <span class="o">*</span> <span class="n">kappa2</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">M2</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">phi3</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w3</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">kappa3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">phi3</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">M3</span> <span class="o">=</span> <span class="n">EI</span> <span class="o">*</span> <span class="n">kappa3</span>
+<span class="n">V3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">M3</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">Eq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">Eq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span>  <span class="n">w1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span>   <span class="n">w2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="n">Eq4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span>  <span class="n">M1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span>   <span class="n">M2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="n">Eq5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span>  <span class="n">V1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span>   <span class="n">V2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="n">Eq6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">phi1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="n">phi2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+
+<span class="n">Eq7</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span>  <span class="n">w2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span>   <span class="n">w3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+<span class="n">Eq8</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span>  <span class="n">M2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span>   <span class="n">M3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+<span class="n">Eq9</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span>  <span class="n">V2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span>   <span class="n">V3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="p">)</span>
+<span class="n">Eq10</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">phi2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span> <span class="n">phi3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="n">Eq11</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">w3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Eq12</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">M3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">Eq1</span><span class="p">,</span> <span class="n">Eq2</span><span class="p">,</span> <span class="n">Eq3</span><span class="p">,</span> <span class="n">Eq4</span><span class="p">,</span> <span class="n">Eq5</span><span class="p">,</span> <span class="n">Eq6</span><span class="p">,</span> <span class="n">Eq7</span><span class="p">,</span> <span class="n">Eq8</span><span class="p">,</span> <span class="n">Eq9</span><span class="p">,</span> <span class="n">Eq10</span><span class="p">,</span> <span class="n">Eq11</span><span class="p">,</span> <span class="n">Eq12</span><span class="p">),</span>
+               <span class="p">(</span> <span class="n">C1</span><span class="p">,</span>  <span class="n">C2</span><span class="p">,</span>  <span class="n">C3</span><span class="p">,</span>  <span class="n">C4</span><span class="p">,</span>  <span class="n">C5</span><span class="p">,</span>  <span class="n">C6</span><span class="p">,</span>  <span class="n">C7</span><span class="p">,</span>  <span class="n">C8</span><span class="p">,</span>  <span class="n">C9</span><span class="p">,</span>  <span class="n">C10</span><span class="p">,</span>  <span class="n">C11</span><span class="p">,</span>  <span class="n">C12</span><span class="p">))</span>
+
+<span class="n">w1_sol</span> <span class="o">=</span> <span class="n">w1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">w2_sol</span> <span class="o">=</span> <span class="n">w2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">w3_sol</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w1_sol</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w2_sol</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w3_sol</span><span class="p">)</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">w1_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">)),(</span><span class="n">w2_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)),(</span><span class="n">w3_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">L</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{x^{4}}{24000} - \frac{73 x^{3}}{90000} + \frac{6673 x}{90000}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{13 x^{3}}{90000} - \frac{x^{2}}{250} + \frac{7633 x}{90000} - \frac{4}{375}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{79 x^{3}}{180000} - \frac{79 x^{2}}{4000} + \frac{40781 x}{180000} - \frac{5231}{12000}\]</div>
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_23_3.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_23_3.png" />
+</div>
+</div>
+</section>
+<section id="alternative-plotting">
+<h2>Alternative plotting<a class="headerlink" href="#alternative-plotting" title="Permalink to this headline">#</a></h2>
+<p>Furthermore, the (more extensive) plot functions of the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library can be used when the results are written to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> functions. The use of these libraries is not advised in combination with the <code class="docutils literal notranslate"><span class="pre">Heaviside</span></code> and <code class="docutils literal notranslate"><span class="pre">DiracDelta</span></code> functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x1_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span>    <span class="p">,</span> <span class="n">a</span>    <span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">x2_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span>    <span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">x3_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">L</span>    <span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">w1_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w1_sol</span><span class="p">)</span>
+<span class="n">w2_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w2_sol</span><span class="p">)</span>
+<span class="n">w3_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w3_sol</span><span class="p">)</span>
+<span class="n">w1_plot</span> <span class="o">=</span> <span class="n">w1_numpy</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">)</span>
+<span class="n">w2_plot</span> <span class="o">=</span> <span class="n">w2_numpy</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">)</span>
+<span class="n">w3_plot</span> <span class="o">=</span> <span class="n">w3_numpy</span><span class="p">(</span><span class="n">x3_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">,</span><span class="n">w1_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">,</span><span class="n">w2_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3_plot</span><span class="p">,</span><span class="n">w3_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;w-lijn&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> m&#39;</span> <span class="o">%</span> <span class="n">w1_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">w1_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> m&#39;</span> <span class="o">%</span> <span class="n">w2_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">w2_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_26_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M1_sol</span> <span class="o">=</span> <span class="n">M1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">M2_sol</span> <span class="o">=</span> <span class="n">M2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">M3_sol</span> <span class="o">=</span> <span class="n">M3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">M1_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">M1_sol</span><span class="p">)</span>
+<span class="n">M2_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">M2_sol</span><span class="p">)</span>
+<span class="n">M3_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">M3_sol</span><span class="p">)</span>
+<span class="n">M1_plot</span> <span class="o">=</span> <span class="n">M1_numpy</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">)</span>
+<span class="n">M2_plot</span> <span class="o">=</span> <span class="n">M2_numpy</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">)</span>
+<span class="n">M3_plot</span> <span class="o">=</span> <span class="n">M3_numpy</span><span class="p">(</span><span class="n">x3_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">,</span><span class="n">M1_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">,</span><span class="n">M2_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3_plot</span><span class="p">,</span><span class="n">M3_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;M-lijn&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kNm&#39;</span> <span class="o">%</span> <span class="n">M1_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">M1_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kNm&#39;</span> <span class="o">%</span> <span class="n">M1_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">M1_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kNm&#39;</span> <span class="o">%</span> <span class="n">M2_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">M2_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_27_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V1_sol</span> <span class="o">=</span> <span class="n">V1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">V2_sol</span> <span class="o">=</span> <span class="n">V2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">V3_sol</span> <span class="o">=</span> <span class="n">V3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">V1_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">V1_sol</span><span class="p">)</span>
+<span class="n">V2_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">V2_sol</span><span class="p">)</span>
+<span class="n">V3_numpy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">V3_sol</span><span class="p">)</span>
+<span class="n">V1_plot</span> <span class="o">=</span> <span class="n">V1_numpy</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">)</span>
+<span class="n">V2_plot</span> <span class="o">=</span> <span class="n">V2_numpy</span><span class="p">(</span><span class="n">x2_plot</span><span class="p">)</span>
+<span class="n">V3_plot</span> <span class="o">=</span> <span class="n">V3_numpy</span><span class="p">(</span><span class="n">x3_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1_plot</span><span class="p">,</span><span class="n">V1_plot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">],[</span><span class="n">V2_plot</span><span class="p">,</span><span class="n">V2_plot</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">L</span><span class="p">],[</span><span class="n">V3_plot</span><span class="p">,</span><span class="n">V3_plot</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;V-lijn&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kN&#39;</span> <span class="o">%</span> <span class="n">V1_numpy</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">V1_numpy</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kN&#39;</span> <span class="o">%</span> <span class="n">V1_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">V1_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kN&#39;</span> <span class="o">%</span> <span class="n">V2_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">V2_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kN&#39;</span> <span class="o">%</span> <span class="n">V2_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">V2_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kN&#39;</span> <span class="o">%</span> <span class="n">V3_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">V3_numpy</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> kN&#39;</span> <span class="o">%</span> <span class="n">V3_numpy</span><span class="p">(</span><span class="n">L</span><span class="p">),</span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="n">V3_numpy</span><span class="p">(</span><span class="n">L</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/SymPy_example_for_Structural_Mechanics_problems_28_0.png" src="../_images/SymPy_example_for_Structural_Mechanics_problems_28_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Instruction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Het_gebruik_van_Python_bij_ConstructieMechanica.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Het gebruik van Python bij Constructiemechanica</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Basisgeval college statisch onbepaald met Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom van Woudenberg<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1040 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 4 exercise 1 cable &#8212; SymPy instructions and examples</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Taylor series" href="Taylor_series.html" />
+    <link rel="prev" title="Example Extension week 1 strain energy#" href="Example_Extension_week_1_strain_energy.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SymPy instructions and examples</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to this SymPy example and instruction book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Instruction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Instruction/Het_gebruik_van_Python_bij_ConstructieMechanica.html">
+   Het gebruik van Python bij Constructiemechanica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Instruction/SymPy_example_for_Structural_Mechanics_problems.html">
+   SymPy example for Structural Mechanics problems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Constructiemechanics 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/basisgeval-college-statischonbepaald-met-Python.html">
+   Basisgeval college statisch onbepaald met Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/College_introductie_MatrixFrame_opdracht.html">
+   Introductie SymPy voor Matrixframe opdracht
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Introductie_verplaatsingenmethode.html">
+   Introductie verplaatsingenmethode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_1.html">
+   Sympy voorbeeld 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_2.html">
+   Sympy voorbeeld 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Constructiemechanica_3/Sympy_voorbeeld_3.html">
+   Sympy voorbeeld 3
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Structural Mechanics 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Lecture-example-ODE.html">
+   Lecture example ODE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Vergelijking_methodes.html">
+   Vergelijking oplosmethodes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_1_work_and_energy.html">
+   Exercise 1 work and energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Exercise_6_Work_and_Energy.html">
+   Exercise 6 Work and Energy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Structural_Mechanics_4/Taylor_approximation.html">
+   Taylor approximation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generic examples Structural Mechanics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger.html">
+   DV-SB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SB-ligger-F.html">
+   DV-SB-ligger-F
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger.html">
+   DV-SOB-ligger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/DV-SOB-ligger-met-veer.html">
+   DV-SOB-ligger-met-veer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/Vakwerk_SB.html">
+   Vakwerk_SB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Generic_examples_Structural_Mechanics/VGM-q-last.html">
+   VGM-q-last
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Base Structural Engineering
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Exact_length_parabolic_cable.html">
+   Parabolic cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Example_Extension_week_1_strain_energy.html">
+   Example Extension week 1 strain energy#
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lecture 4 exercise 1 cable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Taylor_series.html">
+   Taylor series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Wrinkler_element_definition.html">
+   Wrinkler element definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Variation_of_load_cable.html">
+   Variation of load cable
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Slender Structures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Assignment_bending_shear_beam_B.html">
+   Assignment bending shear beam B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Beam_with_varying_EI_and_q.html">
+   Beam with varying EI and q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Constrained_bending_with_tension.html">
+   Constrained bending with tension
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Example_riser_model.html">
+   Exampel riser model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Example_wheel_on_cable_dirac.html">
+   Example wheel on cable dirac
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Foundation_pile.html">
+   Foundation pile
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Park_bridge_2018.html">
+   Park bridge 2018
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Timoshenko_Beam.html">
+   Timoshenko beam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_slender_structures/Timoshenko_Beam_element_definition.html">
+   Timoshenko Beam element definition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamics of Structures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_1_Python.html">
+   CIE_4140_Lecture_2_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_2_2_Python.html">
+   CIE_4140_Lecture_2_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_1_Python.html">
+   CIE_4140_Lecture_3_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_2_Python.html">
+   CIE_4140_Lecture_3_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_3_Python.html">
+   CIE_4140_Lecture_3_3_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_3_4_Python.html">
+   CIE_4140_Lecture_3_4_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python.html">
+   CIE4140_Lecture_13_Part_1_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_1_Python_seperate_q.html">
+   CIE4140_Lecture_13_Part_1_Python_seperate_q
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE4140_Lecture_13_Part_2_Python.html">
+   CIE4140_Lecture_13_Part_2_Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples_Dynamics_of_Structures/CIE_4140_Lecture_18_Part_1_Python.html">
+   CIE_4140_Lecture_18_Part_1_Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Other_examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Other_examples/Singularity_function_with_hinged_beam.html">
+   Singularity functions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Examples_Base_Structural_Engineering/Lecture_4_exercise_1_cable.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lecture 4 exercise 1 cable</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-4-exercise-1-cable">
+<h1>Lecture 4 exercise 1 cable<a class="headerlink" href="#lecture-4-exercise-1-cable" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">L</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">q2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">q3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Bv</span> <span class="o">=</span> <span class="p">(</span><span class="n">q1</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">F</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Bv</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">Bv</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="mi">5</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">display</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{35}{3}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{175}{6}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 29.1666666666667\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;H x&#39;</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">C3</span><span class="p">,</span> <span class="n">C4</span><span class="p">,</span> <span class="n">C5</span><span class="p">,</span> <span class="n">C6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2 C3 C4 C5 C6&#39;</span><span class="p">)</span>
+<span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z1 z2 z3&#39;</span><span class="p">,</span><span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="n">ODE1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="n">q1</span><span class="p">)</span>
+<span class="n">ODE2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="n">q2</span><span class="p">)</span>
+<span class="n">ODE3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z3</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="n">q3</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">([</span><span class="n">ODE1</span><span class="p">,</span><span class="n">ODE2</span><span class="p">,</span><span class="n">ODE3</span><span class="p">],[</span><span class="n">z1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">z2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">z3</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">z3</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">rhs</span>
+
+<span class="n">V1</span> <span class="o">=</span> <span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">V3</span> <span class="o">=</span> <span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z3</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">),</span><span class="n">z2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">))</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">V1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">),</span><span class="n">V2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">z3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">V2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">V3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">+</span><span class="n">F</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="n">eq1</span><span class="p">,</span><span class="n">eq2</span><span class="p">,</span><span class="n">eq3</span><span class="p">,</span><span class="n">eq4</span><span class="p">,</span><span class="n">eq5</span><span class="p">,</span><span class="n">eq6</span><span class="p">],[</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">C3</span><span class="p">,</span><span class="n">C4</span><span class="p">,</span><span class="n">C5</span><span class="p">,</span><span class="n">C6</span><span class="p">])</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="n">z2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">z3</span> <span class="o">=</span> <span class="n">z3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">z3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{5 x^{2}}{2 H} + \frac{40 x}{3 H}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{10 x}{3 H} + \frac{10}{H}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{35 x}{3 H} + \frac{70}{H}\]</div>
+</div>
+</div>
+<p>exact</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ds2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ds3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z3</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Taylor option 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ds1 = 1 + sp.diff(z1,x)**2/2</span>
+<span class="c1"># ds2 = 1 + sp.diff(z2,x)**2/2</span>
+<span class="c1"># ds3 = 1 + sp.diff(z3,x)**2/2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Taylor option 2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ds1 = 1 + sp.diff(z1,x)**2/2 - sp.diff(z1,x)**4/8</span>
+<span class="c1">#ds2 = 1 + sp.diff(z2,x)**2/2 - sp.diff(z2,x)**4/8</span>
+<span class="c1">#ds3 = 1 + sp.diff(z3,x)**2/2 - sp.diff(z3,x)**4/8</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ds1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ds2</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ds3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \sqrt{\left(- \frac{5 x}{H} + \frac{40}{3 H}\right)^{2} + 1}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \sqrt{1 + \frac{100}{9 H^{2}}}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \sqrt{1 + \frac{1225}{9 H^{2}}}\]</div>
+</div>
+</div>
+<p>Length of cable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#LL = sp.integrate(ds1,(x,sp.S(0),a))+sp.integrate(ds2,(x,a,a+b))+sp.integrate(ds3,(x,a+b,L))</span>
+<span class="n">LL</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">175</span><span class="o">/</span><span class="mi">6</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">))</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">175</span><span class="o">/</span><span class="mi">6</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">175</span><span class="o">/</span><span class="mi">6</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">L</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">LL</span><span class="p">)</span> <span class="c1">#incorrect solution integral</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds1</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">))</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds2</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds3</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">L</span><span class="p">)),</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mf">6.2558</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">eq7</span><span class="p">))</span>
+<span class="n">H_sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsolve</span><span class="p">(</span><span class="n">eq7</span><span class="p">,</span><span class="n">H</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">H_sol</span><span class="p">)</span>
+<span class="n">LL</span>  <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">))</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">L</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">LL</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6.25580223961325\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{2 \sqrt{9 H^{2} + 100} + 2 \sqrt{9 H^{2} + 1225} + \int\limits_{0}^{2} \sqrt{9 H^{2} + 225 x^{2} - 1200 x + 1600}\, dx}{3 H} = 6.2558\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 29.1667985144668\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle -129746122929166.0\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1_sol</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">)</span>
+<span class="n">z2_sol</span> <span class="o">=</span> <span class="n">z2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">)</span>
+<span class="n">z3_sol</span> <span class="o">=</span> <span class="n">z3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="n">z1_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">)),(</span><span class="o">-</span><span class="n">z2_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)),(</span><span class="o">-</span><span class="n">z3_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span><span class="n">L</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Lecture_4_exercise_1_cable_13_0.png" src="../_images/Lecture_4_exercise_1_cable_13_0.png" />
+</div>
+</div>
+<p>Alternative</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">L</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">q0</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">H</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;H x&#39;</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">,</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;C1 C2&#39;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="bp">cls</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">q0</span><span class="o">*</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">Heaviside</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">))</span><span class="o">+</span><span class="n">F</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">DiracDelta</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">))</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">q</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">))</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Lecture_4_exercise_1_cable_16_0.png" src="../_images/Lecture_4_exercise_1_cable_16_0.png" />
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 25.0\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ODE</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="n">q</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">ODE</span><span class="p">,</span><span class="n">z</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">rhs</span>
+
+<span class="n">V</span> <span class="o">=</span> <span class="n">H</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">L</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="n">eq1</span><span class="p">,</span><span class="n">eq2</span><span class="p">,],[</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">])</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eq3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mf">0.8</span><span class="p">))</span>
+<span class="n">H_sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nsolve</span><span class="p">(</span><span class="n">eq3</span><span class="p">,</span><span class="n">H</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">H_sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 29.1666666666667\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_sol</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">H_sol</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="n">z_sol</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Lecture_4_exercise_1_cable_19_0.png" src="../_images/Lecture_4_exercise_1_cable_19_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sympy.plotting.plot.Plot at 0x22b4c2cbf10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">175</span><span class="o">/</span><span class="mi">6</span><span class="p">)),</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">LL</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">LL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_19148</span>\<span class="mf">3901687175.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">175</span><span class="o">/</span><span class="mi">6</span><span class="p">)),</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">LL</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">ds</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">display</span><span class="p">(</span><span class="n">LL</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1565</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">integral</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span>         <span class="k">return</span> <span class="n">integral</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>         <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)</span> <span class="k">else</span> <span class="n">a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="k">if</span> <span class="n">reps</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span>             <span class="n">undo</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">reps</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="ne">--&gt; </span><span class="mi">500</span>             <span class="n">did</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xreplace</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">hints</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">did</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>  <span class="c1"># when separate=True</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>                 <span class="n">did</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">xreplace</span><span class="p">(</span><span class="n">undo</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">did</span><span class="p">])</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span>                         <span class="o">**</span><span class="n">eval_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">551</span>                     <span class="n">antideriv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_integral</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span>                         <span class="n">function</span><span class="p">,</span> <span class="n">xab</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">eval_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span>             <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">_eval_integral</span><span class="nt">(self, f, x, meijerg, risch, manual, heurisch, conds, final)</span>
+<span class="g g-Whitespace">    </span><span class="mi">940</span>         <span class="c1"># Piecewise antiderivatives need to call special integrate.</span>
+<span class="g g-Whitespace">    </span><span class="mi">941</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Piecewise</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">942</span>             <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">piecewise_integrate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">eval_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">943</span> 
+<span class="g g-Whitespace">    </span><span class="mi">944</span>         <span class="c1"># let&#39;s cut it short if `f` does not depend on `x`; if</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\functions\elementary\piecewise.py</span> in <span class="ni">piecewise_integrate</span><span class="nt">(self, x, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span><span class="sd">         from sympy.integrals import integrate</span>
+<span class="ne">--&gt; </span><span class="mi">365</span><span class="sd">         return self.func(*[(integrate(e, x, **kwargs), c) for e, c in self.args])</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span><span class="sd">     def _handle_irel(self, x, handler):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\functions\elementary\piecewise.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span>         <span class="kn">from</span> <span class="nn">sympy.integrals</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="ne">--&gt; </span><span class="mi">365</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="p">[(</span><span class="n">integrate</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span> 
+<span class="g g-Whitespace">    </span><span class="mi">367</span>     <span class="k">def</span> <span class="nf">_handle_irel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1565</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">integral</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span>         <span class="k">return</span> <span class="n">integral</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>         <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)</span> <span class="k">else</span> <span class="n">a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span>                     <span class="n">antideriv</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">613</span>                     <span class="n">antideriv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_integral</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>                         <span class="n">function</span><span class="p">,</span> <span class="n">xab</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">eval_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>                     <span class="k">if</span> <span class="n">antideriv</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">meijerg</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">_eval_integral</span><span class="nt">(self, f, x, meijerg, risch, manual, heurisch, conds, final)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>                 <span class="c1"># g(x) has at least a DiracDelta term</span>
+<span class="ne">-&gt; </span><span class="mi">1052</span>                 <span class="n">h</span> <span class="o">=</span> <span class="n">deltaintegrate</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>                 <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span>                     <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\deltafunctions.py</span> in <span class="ni">deltaintegrate</span><span class="nt">(f, x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>         <span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span>         <span class="k">if</span> <span class="n">f</span> <span class="o">!=</span> <span class="n">g</span><span class="p">:</span>  <span class="c1"># the expansion worked</span>
+<span class="ne">--&gt; </span><span class="mi">159</span>             <span class="n">fh</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span>             <span class="k">if</span> <span class="n">fh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span>                 <span class="k">return</span> <span class="n">fh</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">integrate</span><span class="nt">(meijerg, conds, risch, heurisch, manual, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1565</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">integral</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1566</span>         <span class="k">return</span> <span class="n">integral</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>         <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="o">**</span><span class="n">doit_flags</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)</span> <span class="k">else</span> <span class="n">a</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">doit</span><span class="nt">(self, **hints)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span>                     <span class="n">antideriv</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">613</span>                     <span class="n">antideriv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_integral</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>                         <span class="n">function</span><span class="p">,</span> <span class="n">xab</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">eval_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>                     <span class="k">if</span> <span class="n">antideriv</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">meijerg</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\integrals.py</span> in <span class="ni">_eval_integral</span><span class="nt">(self, f, x, meijerg, risch, manual, heurisch, conds, final)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1096</span>                 <span class="c1"># rewrite using G functions</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span>                 <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1098</span>                     <span class="n">h</span> <span class="o">=</span> <span class="n">meijerint_indefinite</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span>                 <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span>                     <span class="n">_debug</span><span class="p">(</span><span class="s1">&#39;NotImplementedError from meijerint_definite&#39;</span><span class="p">)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">meijerint_indefinite</span><span class="nt">(f, x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1670</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1671</span><span class="s2">     results = []</span>
+<span class="ne">-&gt; </span><span class="mi">1672</span><span class="s2">     for a in sorted(_find_splitting_points(f, x) | </span><span class="si">{S.Zero}</span><span class="s2">, key=default_sort_key):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span><span class="s2">         res = _meijerint_indefinite_1(f.subs(x, x + a), x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span><span class="s2">         if not res:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">_find_splitting_points</span><span class="nt">(expr, x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span><span class="s2">             compute_innermost(argument, res)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span><span class="s2">     innermost = set()</span>
+<span class="ne">--&gt; </span><span class="mi">424</span><span class="s2">     compute_innermost(expr, innermost)</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span><span class="s2">     return innermost</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span><span class="s2"> </span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">compute_innermost</span><span class="nt">(expr, res)</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span><span class="s2">             return</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span><span class="s2">         for argument in expr.args:</span>
+<span class="ne">--&gt; </span><span class="mi">422</span><span class="s2">             compute_innermost(argument, res)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span><span class="s2">     innermost = set()</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span><span class="s2">     compute_innermost(expr, innermost)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">compute_innermost</span><span class="nt">(expr, res)</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span><span class="s2">             return</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span><span class="s2">         for argument in expr.args:</span>
+<span class="ne">--&gt; </span><span class="mi">422</span><span class="s2">             compute_innermost(argument, res)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span><span class="s2">     innermost = set()</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span><span class="s2">     compute_innermost(expr, innermost)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\integrals\meijerint.py</span> in <span class="ni">compute_innermost</span><span class="nt">(expr, res)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span><span class="s2">         if not isinstance(expr, Expr):</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span><span class="s2">             return</span>
+<span class="ne">--&gt; </span><span class="mi">415</span><span class="s2">         m = expr.match(p*x + q)</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span><span class="s2">         if m and m[p] != 0:</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span><span class="s2">             res.add(-m[q]/m[p])</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\basic.py</span> in <span class="ni">match</span><span class="nt">(self, pattern, old)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1700</span><span class="s2">         # match non-bound symbols</span>
+<span class="g g-Whitespace">   </span><span class="mi">1701</span><span class="s2">         canonical = lambda x: x if x.is_Symbol else x.as_dummy()</span>
+<span class="ne">-&gt; </span><span class="mi">1702</span><span class="s2">         m = canonical(pattern).matches(canonical(self), old=old)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1703</span><span class="s2">         if m is None:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1704</span><span class="s2">             return m</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\add.py</span> in <span class="ni">matches</span><span class="nt">(self, expr, repl_dict, old)</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span><span class="s2">     def matches(self, expr, repl_dict=None, old=False):</span>
+<span class="ne">--&gt; </span><span class="mi">553</span><span class="s2">         return self._matches_commutative(expr, repl_dict, old)</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span><span class="s2">     @staticmethod</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\core\operations.py</span> in <span class="ni">_matches_commutative</span><span class="nt">(self, expr, repl_dict, old)</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="s2">                         if free:</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="s2">                             did.update(free)</span>
+<span class="ne">--&gt; </span><span class="mi">336</span><span class="s2">                             expr = collect(expr, free)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span><span class="s2">                     if expr != was:</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span><span class="s2">                         i += 0</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\radsimp.py</span> in <span class="ni">collect</span><span class="nt">(expr, syms, func, evaluate, exact, distribute_order_term)</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span><span class="s2">                     for a in expr.args if a != o]) + o</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span><span class="s2">         elif expr.is_Mul:</span>
+<span class="ne">--&gt; </span><span class="mi">364</span><span class="s2">             return expr.func(*[</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="s2">                 collect(term, syms, func, True, exact, distribute_order_term)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="s2">                 for term in expr.args])</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\radsimp.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span><span class="s2">         elif expr.is_Mul:</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span><span class="s2">             return expr.func(*[</span>
+<span class="ne">--&gt; </span><span class="mi">365</span><span class="s2">                 collect(term, syms, func, True, exact, distribute_order_term)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="s2">                 for term in expr.args])</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span><span class="s2">         elif expr.is_Pow:</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\radsimp.py</span> in <span class="ni">collect</span><span class="nt">(expr, syms, func, evaluate, exact, distribute_order_term)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="s2">                 for term in expr.args])</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span><span class="s2">         elif expr.is_Pow:</span>
+<span class="ne">--&gt; </span><span class="mi">368</span><span class="s2">             b = collect(</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="s2">                 expr.base, syms, func, True, exact, distribute_order_term)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="s2">             return Pow(b, expr.exp)</span>
+
+<span class="nn">~\Anaconda3\lib\site-packages\sympy\simplify\radsimp.py</span> in <span class="ni">collect</span><span class="nt">(expr, syms, func, evaluate, exact, distribute_order_term)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="s2">             return Pow(b, expr.exp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">372</span><span class="s2">     syms = [expand_power_base(i, deep=False) for i in syms]</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">374</span><span class="s2">     order_term = None</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Examples_Base_Structural_Engineering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Example_Extension_week_1_strain_energy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Example Extension week 1 strain energy#</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Taylor_series.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Taylor series</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tom van Woudenberg<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
