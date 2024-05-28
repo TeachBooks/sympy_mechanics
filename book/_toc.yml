@@ -2,7 +2,7 @@ format: jb-book
 root: intro.md
 
 parts:
-  - caption: Generic examples Structural mechanics:
+  - caption: Generic examples Structural mechanics
     chapters:
     - file: Generic_examples_Structural_Mechanics/DV-SB-ligger
       title: Dv-sb-ligger
