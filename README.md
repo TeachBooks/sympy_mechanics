@@ -1,3 +1,6 @@
+# Moved
+This repository has been moved to: https://github.com/TUDelft-books/Sympy-Mechanics
+
 # About the project
 In this project we store SymPy example files for symbolic calculations
 
