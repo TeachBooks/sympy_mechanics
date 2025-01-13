@@ -23,6 +23,7 @@ sphinx:
       repository_url: "https://github.com/TeachBooks/sympy_mechanics" #add your own repo URL here
       use_repository_button: true
       use_issues_button : true
+      announcement : "This book has been moved to: <a href='https://oit.tudelft.nl/Sympy-Mechanics' style='color:white'>https://oit.tudelft.nl/Sympy-Mechanics</a>."
       launch_buttons:
         thebe: true
     html_show_copyright: false
